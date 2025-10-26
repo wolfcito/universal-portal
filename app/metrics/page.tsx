@@ -3,10 +3,10 @@ import {
   BellRing,
   Gauge,
   LineChart,
-  Podium,
   ShieldCheck,
   Timer,
   TrendingUp,
+  Trophy,
 } from "lucide-react";
 
 const kpis = [
@@ -20,7 +20,7 @@ const kpis = [
     title: "Tasa de finalización de quests",
     value: "64%",
     description: "Usuarios que completaron 3/3 quests base.",
-    icon: Podium,
+    icon: Trophy,
   },
   {
     title: "Tiempo a primer claim",

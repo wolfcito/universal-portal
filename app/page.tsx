@@ -1,7 +1,11 @@
-export default function Page() {
+import { SprayForm } from "@/components/spray-form";
+
+export default function SprayPage() {
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <h1 className="text-4xl font-bold">Hello World</h1>
-    </div>
-  )
+    <main className="min-h-screen bg-background p-6">
+      <div className="max-w-lg mx-auto">
+        <SprayForm />
+      </div>
+    </main>
+  );
 }

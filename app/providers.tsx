@@ -4,7 +4,7 @@ import React from 'react';
 import { ClientOnly } from '@/components/client-only';
 import { LoadingSpinner } from '@/components/loading-spinner';
 
-// Componente que solo se renderiza en el cliente
+// Component rendered only on the client
 function PushWalletProvider({ children }: { children: React.ReactNode }) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [Provider, setProvider] = React.useState<any>(null);
@@ -12,7 +12,7 @@ function PushWalletProvider({ children }: { children: React.ReactNode }) {
   const [PushUI, setPushUI] = React.useState<any>(null);
 
   React.useEffect(() => {
-    // Import dinámico solo en el cliente
+    // Dynamic import only on the client
     import('@pushchain/ui-kit').then((mod) => {
       setProvider(() => mod.PushUniversalWalletProvider);
       setPushUI(() => mod.PushUI);
@@ -20,7 +20,7 @@ function PushWalletProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   if (!Provider || !PushUI) {
-    return <LoadingSpinner message="Inicializando wallet..." />;
+    return <LoadingSpinner message="Initializing wallet..." />;
   }
 
   return (
@@ -39,11 +39,10 @@ function PushWalletProvider({ children }: { children: React.ReactNode }) {
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ClientOnly fallback={<LoadingSpinner message="Cargando aplicación..." />}>
+    <ClientOnly fallback={<LoadingSpinner message="Loading app..." />}>
       <PushWalletProvider>
         {children}
       </PushWalletProvider>
     </ClientOnly>
   );
 }
-

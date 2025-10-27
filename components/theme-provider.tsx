@@ -6,24 +6,24 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Verificar el tema guardado en localStorage
+    // Check stored theme in localStorage
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    // Si no hay tema guardado, usar la preferencia del sistema
+    // If no stored theme, fall back to system preference
     if (!savedTheme) {
       const theme = prefersDark ? 'dark' : 'light';
       localStorage.setItem('theme', theme);
       document.documentElement.classList.toggle('dark', theme === 'dark');
     } else {
-      // Aplicar el tema guardado
+      // Apply stored theme
       document.documentElement.classList.toggle('dark', savedTheme === 'dark');
     }
     
     setMounted(true);
   }, []);
 
-  // Evitar renderizado hasta que el tema esté inicializado
+  // Avoid rendering until theme initialization finishes
   if (!mounted) {
     return <div className="min-h-screen bg-background" />;
   }

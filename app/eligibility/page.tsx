@@ -5,52 +5,52 @@ const stampMatrix = [
     provider: "Gitcoin Passport",
     weight: 8,
     checks: ["CEX KYC", "Social graph", "Proof of Humanity"],
-    status: "Pre-integrado (score API)",
-    action: "Connect Passport → fetch stamps → calcular score ≥ 15",
+    status: "Pre-integrated (score API)",
+    action: "Connect Passport → fetch stamps → calculate score ≥ 15",
   },
   {
     provider: "BrightID",
     weight: 6,
     checks: ["Web-of-trust", "Context guardian"],
-    status: "Badge validado",
-    action: "Escanear QR BrightID → registrar hash → boost 1.15x",
+    status: "Badge validated",
+    action: "Scan BrightID QR → register hash → apply 1.15x boost",
   },
   {
     provider: "Farcaster",
     weight: 4,
     checks: ["Unique username", "Onchain verification"],
-    status: "PoC onchain listo",
-    action: "Leer `fid`, verificación onchain → elegible + push noti",
+    status: "Onchain PoC ready",
+    action: "Read `fid`, verify onchain → eligible + push notification",
   },
   {
     provider: "Human Passport",
     weight: 4,
-    checks: ["Modular PoI", "Privacidad preservada"],
+    checks: ["Modular PoI", "Privacy preserved"],
     status: "Opt-in",
-    action: "Validar credencial zero-knowledge → boost 1.05x",
+    action: "Validate zero-knowledge credential → boost 1.05x",
   },
 ];
 
 const protections = [
   {
-    title: "Threshold dinámico",
+    title: "Dynamic threshold",
     description:
-      "Eligibilidad base: Passport ≥ 15 o BrightID. Boost máximo combinando Farcaster + Human Passport.",
+      "Base eligibility: Passport ≥ 15 or BrightID. Max boost by combining Farcaster + Human Passport.",
   },
   {
-    title: "Rate limits & heurísticas",
+    title: "Rate limits & heuristics",
     description:
-      "Cooldowns por IP/device, alertas si múltiples claims por `universalSigner`, comparación heurística de balance/edad.",
+      "Cooldown per IP/device, alerts if multiple claims from the same `universalSigner`, heuristic balance/age checks.",
   },
   {
-    title: "Appeals sin fricción",
+    title: "Low-friction appeals",
     description:
-      "Formulario corto con upload opcional → ticket en Push Chat para revisión manual dentro del equipo.",
+      "Short form with optional upload → Push Chat ticket for lightweight manual review.",
   },
   {
-    title: "Privacidad por diseño",
+    title: "Privacy by design",
     description:
-      "Escogemos stamps que no exigen biometría. Uso de hashes y verificaciones off-chain firmadas para minimizar exposiciones.",
+      "Select stamps that avoid biometrics. Use hashed data and signed off-chain verifications to minimize exposure.",
   },
 ];
 
@@ -62,30 +62,29 @@ export default function EligibilityPage() {
           <div className="flex-1 space-y-4">
             <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
               <ShieldHalf className="h-4 w-4" />
-              Anti-Sybil · Defensa en profundidad
+              Anti-Sybil · Defense in depth
             </span>
             <h1 className="text-3xl font-bold sm:text-4xl">
-              Eligibility clara, score transparente.
+              Clear eligibility, transparent scoring.
             </h1>
             <p className="text-sm text-muted-foreground sm:text-base">
-              Combinamos stamps verificables, heurísticas ligeras y UX sin fricciones.
-              El participante sabe qué necesita y cómo mejorar su score antes de intentar el claim.
+              We combine verifiable stamps, lightweight heuristics, and low-friction UX. Participants know what they need and how to raise their score before attempting a claim.
             </p>
             <div className="flex items-center gap-3 rounded-2xl border bg-card p-4 shadow-sm">
               <Info className="h-10 w-10 rounded-full bg-muted p-2 text-primary" />
               <div className="text-sm text-muted-foreground">
                 <p className="font-semibold text-foreground">
-                  Eligibility básica · Necesitas al menos una de las rutas:
+                  Baseline eligibility · Choose at least one route:
                 </p>
                 <ul className="mt-2 list-disc space-y-1 pl-5">
                   <li>
                     Gitcoin Passport score <span className="font-semibold">≥ 15</span>
                   </li>
                   <li>
-                    BrightID verificado + Quest onchain completada
+                    BrightID verified + onchain quest completed
                   </li>
                   <li>
-                    Farcaster verificado + Human Passport (boost opcional)
+                    Farcaster verified + Human Passport (optional boost)
                   </li>
                 </ul>
               </div>
@@ -116,7 +115,7 @@ export default function EligibilityPage() {
               </div>
               <div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="font-semibold text-muted-foreground">Farcaster verificado</span>
+                  <span className="font-semibold text-muted-foreground">Farcaster verified</span>
                   <span className="font-semibold text-foreground">ON</span>
                 </div>
                 <div className="mt-2 h-2 rounded-full bg-muted">
@@ -126,7 +125,7 @@ export default function EligibilityPage() {
             </div>
             <div className="mt-6 rounded-2xl bg-primary/10 p-4 text-sm">
               <p className="text-xs font-semibold uppercase tracking-wide text-primary">
-                Resultado (mock)
+                Result (mock)
               </p>
               <div className="mt-2 flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">
@@ -138,7 +137,7 @@ export default function EligibilityPage() {
               </div>
             </div>
             <p className="mt-4 text-xs text-muted-foreground">
-              Este estimador vive dentro del claim flow para que nadie gaste gas sin saber si calificará.
+              This estimator lives inside the claim flow so nobody spends gas without knowing if they qualify.
             </p>
           </div>
         </div>
@@ -148,10 +147,10 @@ export default function EligibilityPage() {
         <div className="flex flex-col gap-10 lg:flex-row">
           <div className="flex-1 space-y-4">
             <h2 className="text-2xl font-bold sm:text-3xl">
-              Stamps priorizados para el MVP
+              Priority stamps for the MVP
             </h2>
             <p className="text-sm text-muted-foreground">
-              Cada stamp agrega puntos ponderados. Se documentan en el README los endpoints y contratos necesarios.
+              Each stamp adds weighted points. Required endpoints and contracts are documented in the README.
             </p>
             <div className="space-y-4">
               {stampMatrix.map((stamp) => (
@@ -160,7 +159,7 @@ export default function EligibilityPage() {
                     <div>
                       <p className="text-lg font-semibold">{stamp.provider}</p>
                       <p className="text-xs uppercase tracking-wide text-primary/80">
-                        Peso {stamp.weight}
+                        Weight {stamp.weight}
                       </p>
                     </div>
                     <span className="rounded-full bg-muted px-3 py-1 text-xs font-semibold text-muted-foreground">
@@ -185,17 +184,17 @@ export default function EligibilityPage() {
                 <Siren className="h-10 w-10 rounded-full bg-destructive/10 p-2 text-destructive" />
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                    Riesgos conocidos
+                    Known risks
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    Granjas que comparten stamps, falsos negativos que fallan en Passport.
+                    Farming rings sharing stamps, false negatives failing Passport checks.
                   </p>
                 </div>
               </div>
               <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-muted-foreground">
-                <li>Señales adicionales: actividad previa en Push Chain, balance mínimo.</li>
-                <li>Cooldown soft: 1 claim por 12h por IP/device. Registro en backend ligero.</li>
-                <li>Appeals directo por Push Chat con respuesta SLA &lt; 24h.</li>
+                <li>Additional signals: prior Push Chain activity, minimum balance.</li>
+                <li>Soft cooldown: 1 claim per 12h per IP/device. Logged in a lightweight backend.</li>
+                <li>Appeals via Push Chat with a sub-24h response SLA.</li>
               </ul>
             </div>
             <div className="rounded-2xl border bg-card p-6 shadow-sm">
@@ -203,17 +202,17 @@ export default function EligibilityPage() {
                 <Sparkles className="h-10 w-10 rounded-full bg-primary/10 p-2 text-primary" />
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                    Integraciones siguientes
+                    Next integrations
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    Modularizamos para agregar nuevas credenciales sin tocar el claim core.
+                    Modular design lets us add new credentials without touching the claim core.
                   </p>
                 </div>
               </div>
               <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-muted-foreground">
                 <li>Passport v3 score endpoint + caching.</li>
-                <li>BrightID context-checker (GraphQL) para verificar relaciones sospechosas.</li>
-                <li>Attestaciones EAS emitidas por partners de Project G.U.D.</li>
+                <li>BrightID context-checker (GraphQL) to inspect suspicious links.</li>
+                <li>EAS attestations issued by Project G.U.D partners.</li>
               </ul>
             </div>
             <div className="rounded-2xl border bg-card p-6 shadow-sm">
@@ -221,18 +220,18 @@ export default function EligibilityPage() {
                 <UserCheck className="h-10 w-10 rounded-full bg-primary/10 p-2 text-primary" />
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                    Cómo medimos
+                    How we measure
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    Métricas se exponen en la pantalla de métricas y se auditan en el README.
+                    Metrics surface on the metrics page and are summarized in the README.
                   </p>
                 </div>
               </div>
               <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-muted-foreground">
-                <li>% de rechazos por falta de stamps.</li>
-                <li>% de usuarios con BrightID verificado.</li>
-                <li>Median score global + percentil 90.</li>
-                <li>Tiempo promedio desde elegibilidad → claim.</li>
+                <li>% of rejections due to missing stamps.</li>
+                <li>% of users with verified BrightID.</li>
+                <li>Global median score + 90th percentile.</li>
+                <li>Average time from eligibility → claim.</li>
               </ul>
             </div>
           </div>

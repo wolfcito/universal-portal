@@ -19,7 +19,7 @@ export function DebugInfo() {
           <strong>Spray Contract:</strong> 0x6A9d2E8c356E254f50689aEa5D1E5E8FeaAB03a6
         </div>
         <div>
-          <strong>Contract Valid:</strong> ✅ Sí
+          <strong>Contract Valid:</strong> ✅ Yes
         </div>
         <div>
           <strong>UI Kit Version:</strong> 1.1.25

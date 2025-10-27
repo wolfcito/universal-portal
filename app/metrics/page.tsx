@@ -11,27 +11,27 @@ import {
 
 const kpis = [
   {
-    title: "Eficacia anti-Sybil",
+    title: "Anti-Sybil effectiveness",
     value: "82%",
-    description: "% wallets aprobadas con ≥ 1 stamp.",
+    description: "% of wallets approved with ≥ 1 stamp.",
     icon: ShieldCheck,
   },
   {
-    title: "Tasa de finalización de quests",
+    title: "Quest completion rate",
     value: "64%",
-    description: "Usuarios que completaron 3/3 quests base.",
+    description: "Users who completed the 3 core quests.",
     icon: Trophy,
   },
   {
-    title: "Tiempo a primer claim",
+    title: "Time to first claim",
     value: "3m 40s",
-    description: "Desde onboarding → tx confirmada.",
+    description: "Onboarding → confirmed tx.",
     icon: Timer,
   },
   {
-    title: "CTR notificaciones",
+    title: "Notification CTR",
     value: "71%",
-    description: "Push open rate vs entregados.",
+    description: "Push open rate vs. delivered.",
     icon: BellRing,
   },
 ];
@@ -43,17 +43,17 @@ const comparisons = [
     color: "bg-primary",
   },
   {
-    label: "Spray directo",
+    label: "Direct spray",
     gas: 78000,
     color: "bg-primary/60",
   },
 ];
 
 const rejectionReasons = [
-  { label: "Score insuficiente", value: 46 },
-  { label: "Quest onchain faltante", value: 28 },
-  { label: "Cooldown activo", value: 14 },
-  { label: "Prueba inválida", value: 12 },
+  { label: "Insufficient score", value: 46 },
+  { label: "Missing onchain quest", value: 28 },
+  { label: "Cooldown active", value: 14 },
+  { label: "Invalid proof", value: 12 },
 ];
 
 export default function MetricsPage() {
@@ -64,29 +64,28 @@ export default function MetricsPage() {
           <div className="flex-1 space-y-4">
             <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
               <Activity className="h-4 w-4" />
-              Métricas · MVP Deploython
+              Metrics · MVP Deploython
             </span>
             <h1 className="text-3xl font-bold sm:text-4xl">
-              Indicadores accionables para spray, anti-Sybil y quests.
+              Actionable indicators for spray, anti-Sybil, and quests.
             </h1>
             <p className="text-sm text-muted-foreground sm:text-base">
-              Esta vista responde rápido: ¿nuestro scoring funciona?, ¿qué tan bien convierten las quests?,
-              ¿cuánto gas gastamos?, ¿estamos entregando valor? Adaptada para presentar en demo o revisar con stakeholders.
+              This view answers the fast questions: is scoring working, how well do quests convert, how much gas are we spending, are we delivering value? Tuned for demos and stakeholder reviews.
             </p>
             <div className="rounded-2xl border bg-card p-4 shadow-sm">
               <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                Objetivos MVP
+                MVP targets
               </p>
               <ul className="mt-2 list-disc space-y-2 pl-5 text-sm text-muted-foreground">
-                <li>Eficacia anti-Sybil &gt; 70%.</li>
-                <li>Tasa de finalización de quests &gt; 60%.</li>
-                <li>Tiempo a claim &lt; 5 minutos.</li>
+                <li>Anti-Sybil effectiveness &gt; 70%.</li>
+                <li>Quest completion rate &gt; 60%.</li>
+                <li>Time to claim &lt; 5 minutes.</li>
               </ul>
             </div>
           </div>
           <div className="flex-1 rounded-3xl border bg-card p-6 shadow-lg">
             <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              KPIs destacados
+              Featured KPIs
             </p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {kpis.map((kpi) => {
@@ -112,15 +111,15 @@ export default function MetricsPage() {
               <LineChart className="h-10 w-10 rounded-full bg-primary/10 p-2 text-primary" />
               <div>
                 <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                  Porcentaje de aprobación semanal
+                  Weekly approval rate
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  Tendencia mock basada en sandbox (objetivo &gt; 75%).
+                  Mock trend based on sandbox data (target &gt; 75%).
                 </p>
               </div>
             </div>
             <div className="mt-8 grid gap-3 text-sm text-muted-foreground md:grid-cols-4">
-              {["Semana 1", "Semana 2", "Semana 3", "Semana 4"].map((label, index) => {
+              {["Week 1", "Week 2", "Week 3", "Week 4"].map((label, index) => {
                 const value = [68, 74, 81, 84][index];
                 return (
                   <div key={label} className="rounded-2xl border bg-muted/60 p-4 text-center">
@@ -143,7 +142,7 @@ export default function MetricsPage() {
                 <Gauge className="h-8 w-8 text-primary" />
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                    Rechazos por motivo
+                    Rejections by reason
                   </p>
                 </div>
               </div>
@@ -169,17 +168,17 @@ export default function MetricsPage() {
                 <TrendingUp className="h-8 w-8 text-primary" />
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                    Experimentos próximos
+                    Upcoming experiments
                   </p>
                   <p className="text-xs text-muted-foreground">
-                    Qué probar después del Deploython.
+                    Ideas to explore after the Deploython.
                   </p>
                 </div>
               </div>
               <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-muted-foreground">
-                <li>Segmentar boosters por antigüedad en Push Chain.</li>
-                <li>Usar notificaciones dirigidas (personalización por score).</li>
-                <li>A/B test de copy en quests para subir completion rate.</li>
+                <li>Segment boosters by tenure on Push Chain.</li>
+                <li>Use targeted notifications (score personalization).</li>
+                <li>A/B test quest copy to increase completion rate.</li>
               </ul>
             </div>
           </aside>
@@ -189,15 +188,15 @@ export default function MetricsPage() {
       <section className="border-t bg-muted/30">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-16 lg:flex-row">
           <div className="flex-1 space-y-4">
-            <h2 className="text-2xl font-bold sm:text-3xl">Costos estimados</h2>
+            <h2 className="text-2xl font-bold sm:text-3xl">Estimated costs</h2>
             <p className="text-sm text-muted-foreground">
-              Comparamos spray directo vs Merkle claim. El objetivo es mantener el gas por beneficiario lo más bajo posible.
+              Compare direct spray versus Merkle claim. Goal: keep gas per beneficiary as low as possible.
             </p>
             <div className="space-y-3">
               {comparisons.map((item) => (
                 <div key={item.label} className="rounded-2xl border bg-card p-4 shadow-sm">
                   <p className="text-sm font-semibold text-foreground">{item.label}</p>
-                  <p className="text-xs text-muted-foreground">Gas estimado</p>
+                  <p className="text-xs text-muted-foreground">Estimated gas</p>
                   <div className="mt-3 h-3 rounded-full bg-muted">
                     <div
                       className={`h-3 rounded-full ${item.color}`}
@@ -205,7 +204,7 @@ export default function MetricsPage() {
                     />
                   </div>
                   <p className="mt-2 text-xs text-muted-foreground">
-                    {item.gas.toLocaleString()} unidades (mock - Donut RPC)
+                    {item.gas.toLocaleString()} units (mock - Donut RPC)
                   </p>
                 </div>
               ))}
@@ -216,22 +215,22 @@ export default function MetricsPage() {
               <TrendingUp className="h-8 w-8 text-primary" />
               <div>
                 <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                  Historias para contar
+                  Stories to tell
                 </p>
                 <p className="text-xs text-muted-foreground">
-                  Datos para la demo y el README.
+                  Talking points for the demo and README.
                 </p>
               </div>
             </div>
             <div className="mt-6 space-y-4 text-sm text-muted-foreground">
               <p>
-                <span className="font-semibold text-foreground">82% eficacia</span> demuestra que las capas anti-Sybil funcionan sin bloquear usuarios legítimos.
+                <span className="font-semibold text-foreground">82% effectiveness</span> shows layered anti-Sybil defenses stop abuse without blocking legitimate users.
               </p>
               <p>
-                <span className="font-semibold text-foreground">64% quests completadas</span> valida el enfoque educativo tipo Layer3.
+                <span className="font-semibold text-foreground">64% quests completed</span> validates the Layer3-style educational approach.
               </p>
               <p>
-                <span className="font-semibold text-foreground">Gas optimizado</span> gracias al MerkleDistributor y a la simulación previa.
+                <span className="font-semibold text-foreground">Optimized gas</span> thanks to the MerkleDistributor and pre-flight simulation.
               </p>
             </div>
           </div>

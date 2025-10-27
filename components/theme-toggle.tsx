@@ -6,7 +6,7 @@ export function ThemeToggle() {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    // Verificar el tema actual al cargar
+    // Check current theme on load
     const currentTheme = localStorage.getItem('theme') || 'light';
     setIsDark(currentTheme === 'dark');
     document.documentElement.classList.toggle('dark', currentTheme === 'dark');

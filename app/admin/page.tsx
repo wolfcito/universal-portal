@@ -22,21 +22,21 @@ const mockBatches = [
     createdAt: "2025-02-08",
     recipients: 128,
     type: "Merkle Root",
-    status: "Publicado",
+    status: "Published",
   },
   {
     id: "batch-002",
     createdAt: "2025-02-09",
     recipients: 42,
-    type: "Spray directo",
-    status: "Simulado",
+    type: "Direct spray",
+    status: "Simulated",
   },
   {
     id: "batch-003",
     createdAt: "2025-02-10",
     recipients: 12,
     type: "Merkle Root",
-    status: "Pendiente",
+    status: "Pending",
   },
 ];
 
@@ -62,11 +62,11 @@ export default function AdminPage() {
               Admin · Spray & Merkle
             </span>
             <h1 className="text-3xl font-bold sm:text-4xl">
-              Tablero operativo: importar, validar y publicar distribuciones.
+              Operations board: import, validate, and publish distributions.
             </h1>
             <p className="text-sm text-muted-foreground sm:text-base">
-              Diseñado para equipos pequeños. Todo el flujo es auditable, con simulaciones previas y controles anti-Sybil opcionales.
-              En esta vista mostramos datos mock listos para demo.
+              Designed for small teams. Every step is auditable, with pre-flight simulations and optional anti-Sybil controls.
+              This view shows demo-ready mock data.
             </p>
             <div className="flex flex-wrap gap-3 text-xs uppercase tracking-wide text-muted-foreground">
               <span className="inline-flex items-center gap-2 rounded-full border border-dashed px-3 py-1">
@@ -85,14 +85,14 @@ export default function AdminPage() {
           </div>
           <div className="flex-1 rounded-3xl border bg-card p-6 shadow-lg">
             <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              Flujo guiado
+              Guided flow
             </p>
             <div className="mt-6 space-y-4">
               {[
-                { key: "upload", label: "1. Subir dataset", description: "CSV/JSON con address,amount,score" },
-                { key: "validate", label: "2. Validar duplicados & stamps", description: "Checamos checksums, aplicación de thresholds" },
-                { key: "preview", label: "3. Simular gas y montos", description: "Spray directo o Merkle claim preview" },
-                { key: "publish", label: "4. Publicar root / ejecutar spray", description: "Firma universal + notificación" },
+                { key: "upload", label: "1. Upload dataset", description: "CSV/JSON with address,amount,score" },
+                { key: "validate", label: "2. Validate duplicates & stamps", description: "Checksum checks, threshold application" },
+                { key: "preview", label: "3. Simulate gas and amounts", description: "Preview direct spray or Merkle claim" },
+                { key: "publish", label: "4. Publish root / execute spray", description: "Universal signature + notification" },
               ].map(({ key, label, description }) => {
                 const isActive = step === key;
                 const isDone =
@@ -131,7 +131,7 @@ export default function AdminPage() {
               onClick={nextStep}
               className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
-              Avanzar paso (demo)
+              Advance step (demo)
             </button>
           </div>
         </div>
@@ -140,19 +140,19 @@ export default function AdminPage() {
       <section className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
         <div className="grid gap-6 lg:grid-cols-[2fr,1fr]">
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold sm:text-3xl">Historial de lotes</h2>
+            <h2 className="text-2xl font-bold sm:text-3xl">Batch history</h2>
             <p className="text-sm text-muted-foreground">
-              Logs claros para el Deploython. Cada lote muestra quién lo subió, cuándo y su estado actual.
+              Clear logs for the Deploython demo. Every batch shows who uploaded it, when, and its current status.
             </p>
             <div className="overflow-hidden rounded-2xl border shadow-sm">
               <table className="min-w-full divide-y divide-border">
                 <thead className="bg-muted/40 text-xs uppercase tracking-wide text-muted-foreground">
                   <tr>
                     <th className="px-4 py-3 text-left font-semibold">ID</th>
-                    <th className="px-4 py-3 text-left font-semibold">Fecha</th>
-                    <th className="px-4 py-3 text-left font-semibold">Destinatarios</th>
-                    <th className="px-4 py-3 text-left font-semibold">Tipo</th>
-                    <th className="px-4 py-3 text-left font-semibold">Estado</th>
+                    <th className="px-4 py-3 text-left font-semibold">Date</th>
+                    <th className="px-4 py-3 text-left font-semibold">Recipients</th>
+                    <th className="px-4 py-3 text-left font-semibold">Type</th>
+                    <th className="px-4 py-3 text-left font-semibold">Status</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border text-sm">
@@ -165,9 +165,9 @@ export default function AdminPage() {
                       <td className="px-4 py-3">
                         <span
                           className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                            batch.status === "Publicado"
+                            batch.status === "Published"
                               ? "bg-primary/10 text-primary"
-                              : batch.status === "Simulado"
+                              : batch.status === "Simulated"
                                 ? "bg-muted text-muted-foreground"
                                 : "bg-amber-100 text-amber-600"
                           }`}
@@ -186,39 +186,39 @@ export default function AdminPage() {
               <FileBarChart className="h-10 w-10" />
               <div>
                 <p className="text-sm font-semibold uppercase tracking-wide">
-                  Métricas instantáneas
+                  Instant metrics
                 </p>
-                <p className="text-xs text-primary/80">Gas estimado, tasas de rechazo, duplicados detectados.</p>
+                <p className="text-xs text-primary/80">Estimated gas, rejection rates, duplicates detected.</p>
               </div>
             </div>
             <div className="space-y-3 text-sm text-muted-foreground">
               <p>
-                <span className="font-semibold text-foreground">Duplicados:</span>{" "}
-                3 detectados (se auto-descartan con logs descargables).
+                <span className="font-semibold text-foreground">Duplicates:</span>{" "}
+                3 detected (auto-removed with downloadable logs).
               </p>
               <p>
-                <span className="font-semibold text-foreground">Wallets bloqueadas:</span>{" "}
-                2 por score &lt; 12. Se sugiere enviarles tutorial quests.
+                <span className="font-semibold text-foreground">Blocked wallets:</span>{" "}
+                2 for score &lt; 12. Suggest sending them tutorial quests.
               </p>
               <p>
-                <span className="font-semibold text-foreground">Spray directo:</span>{" "}
-                45 direcciones listas, límite por lote configurable (100).
+                <span className="font-semibold text-foreground">Direct spray:</span>{" "}
+                45 addresses queued, configurable batch limit (100).
               </p>
             </div>
             <div className="rounded-2xl border border-dashed bg-muted/40 p-4 text-xs text-muted-foreground">
-              <p className="font-semibold uppercase tracking-wide">Integraciones próximas</p>
+              <p className="font-semibold uppercase tracking-wide">Upcoming integrations</p>
               <ul className="mt-2 space-y-2">
                 <li>
                   <Upload className="mr-2 inline h-4 w-4" />
-                  Integración con Google Sheets / Airtable.
+                  Google Sheets / Airtable integration.
                 </li>
                 <li>
                   <Bolt className="mr-2 inline h-4 w-4" />
-                  Automatizar simulaciones via Tenderly / Push RPC sandbox.
+                  Automate simulations via Tenderly / Push RPC sandbox.
                 </li>
                 <li>
                   <BotOff className="mr-2 inline h-4 w-4" />
-                  Alertas si detectamos patrones Sybil en lote.
+                  Alerts when Sybil patterns are detected in a batch.
                 </li>
               </ul>
             </div>

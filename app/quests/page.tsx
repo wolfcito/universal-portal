@@ -23,20 +23,20 @@ type Quest = {
 const quests: Quest[] = [
   {
     id: "onchain-01",
-    title: "Min Tx en Donut",
+    title: "Min tx on Donut",
     type: "onchain",
     description:
-      "Envía 0.001 DON a nuestra address de sandbox usando el universal signer. Simula primero y captura el hash.",
-    reward: "+4 score · abre claim básico",
-    proof: "Tx hash en Push Chain (Donut)",
+      "Send 0.001 DON to our sandbox address using the universal signer. Simulate first and capture the hash.",
+    reward: "+4 score · unlocks base claim",
+    proof: "Tx hash on Push Chain (Donut)",
   },
   {
     id: "social-01",
-    title: "Follow al canal Push",
+    title: "Follow the Push channel",
     type: "social",
     description:
-      "Sigue el canal oficial de Project G.U.D en Push y activa notificaciones para broadcast de misiones.",
-    reward: "+2 score · notificación de bienvenida",
+      "Follow the official Project G.U.D channel on Push and enable notifications for quest broadcasts.",
+    reward: "+2 score · welcome notification",
     proof: "Push channel subscription",
   },
   {
@@ -44,8 +44,8 @@ const quests: Quest[] = [
     title: "Knowledge Check Express",
     type: "knowledge",
     description:
-      "Responde 3 preguntas rápidas (¿Qué es un Merkle root?, ¿Cómo validamos sybil?, ¿Qué chain usamos?).",
-    reward: "+3 score · boost 1.05x",
+      "Answer 3 quick questions (What is a Merkle root? How do we validate sybil resistance? Which chain do we target?).",
+    reward: "+3 score · 1.05x boost",
     proof: "Form / signed message",
   },
   {
@@ -53,18 +53,18 @@ const quests: Quest[] = [
     title: "Farcaster Cast",
     type: "social",
     description:
-      "Publica un cast con el hashtag #UniversalPortal y pega tu address Donut. Construimos reputación social.",
-    reward: "+2 score · elegibilidad Farcaster",
+      "Post a cast using #UniversalPortal and include your Donut address. Amplify social reputation.",
+    reward: "+2 score · Farcaster eligibility boost",
     proof: "FID + cast URL",
   },
   {
     id: "onchain-02",
-    title: "Stake simbólico",
+    title: "Symbolic stake",
     type: "onchain",
     description:
-      "Aporta 0.002 DON al pool community-lock. Refuerza skin-in-the-game y dificulta bots.",
-    reward: "+5 score · boost 1.1x",
-    proof: "Stake event en contrato `CommunityLock`",
+      "Stake 0.002 DON into the community-lock pool. Adds skin in the game and deters bots.",
+    reward: "+5 score · 1.1x boost",
+    proof: "Stake event on `CommunityLock` contract",
   },
 ];
 
@@ -92,24 +92,22 @@ export default function QuestsPage() {
           <div className="flex-1 space-y-4">
             <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
               <Rocket className="h-4 w-4" />
-              Quests · Activaciones humanas
+              Quests · Human activation
             </span>
             <h1 className="text-3xl font-bold sm:text-4xl">
-              Misiones cortas, medibles y con boost real.
+              Short missions, measurable impact, real boosts.
             </h1>
             <p className="text-sm text-muted-foreground sm:text-base">
-              Combinamos acciones onchain, sociales y de aprendizaje. El panel muestra
-              progreso en vivo y desbloquea el claim cuando cumples los requisitos
-              mínimos.
+              We combine onchain, social, and learning actions. The board shows live progress and unlocks claiming once minimum requirements are met.
             </p>
             <div className="flex items-center gap-4 rounded-2xl border bg-card p-4 shadow-sm">
               <BadgeCheck className="h-10 w-10 rounded-full bg-muted p-2 text-primary" />
               <div className="text-sm text-muted-foreground">
                 <p className="font-semibold text-foreground">
-                  Regla MVP: completa 1 quest onchain + 1 social + knowledge check.
+                  MVP rule: complete 1 onchain quest + 1 social quest + the knowledge check.
                 </p>
                 <p className="mt-2">
-                  Cada quest agrega score. Algunas otorgan boosters para multiplicar tu recompensa final.
+                  Every quest adds score. Some provide multipliers to amplify the final reward.
                 </p>
               </div>
             </div>
@@ -118,27 +116,27 @@ export default function QuestsPage() {
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                  Progreso (sandbox)
+                  Progress (sandbox)
                 </p>
                 <p className="text-3xl font-bold text-foreground">{completionRate}%</p>
                 <p className="text-xs text-muted-foreground">
-                  {completed.length} / {quests.length} quests completas
+                  {completed.length} / {quests.length} quests completed
                 </p>
               </div>
               <Trophy className="h-12 w-12 rounded-full bg-primary/10 p-3 text-primary" />
             </div>
             <div className="mt-6 space-y-3 text-sm">
               <div className="flex items-center justify-between rounded-xl bg-muted/60 px-4 py-3">
-                <span>Boost potencial</span>
+                <span>Potential boost</span>
                 <span className="font-semibold text-foreground">1.25x</span>
               </div>
               <div className="flex items-center justify-between rounded-xl bg-muted/60 px-4 py-3">
-                <span>Tiempo estimado</span>
-                <span className="font-semibold text-foreground">~8 minutos</span>
+                <span>Estimated time</span>
+                <span className="font-semibold text-foreground">~8 minutes</span>
               </div>
               <div className="flex items-center justify-between rounded-xl bg-muted/60 px-4 py-3">
-                <span>Notificación</span>
-                <span className="font-semibold text-primary">Push instantánea</span>
+                <span>Notification</span>
+                <span className="font-semibold text-primary">Instant Push</span>
               </div>
             </div>
           </div>
@@ -150,7 +148,7 @@ export default function QuestsPage() {
           <div className="space-y-4">
             <h2 className="text-2xl font-bold sm:text-3xl">Quest board MVP</h2>
             <p className="text-sm text-muted-foreground">
-              Marca las quests para simular el journey. En producción sincronizamos con indexers/oráculos.
+              Mark quests to simulate the journey. In production we sync with indexers/oracles.
             </p>
             <div className="space-y-4">
               {quests.map((quest) => {
@@ -176,7 +174,7 @@ export default function QuestsPage() {
                             : "bg-muted text-muted-foreground"
                         }`}
                       >
-                        {isCompleted ? "Completada" : "Pendiente"}
+                        {isCompleted ? "Completed" : "Pending"}
                       </span>
                     </div>
                     <p className="text-sm text-muted-foreground">{quest.description}</p>
@@ -203,37 +201,37 @@ export default function QuestsPage() {
                   Multipliers
                 </p>
                 <p className="text-xs text-primary/80">
-                  Onchain + Anti-Sybil = recompensa mayor sin dilución.
+                  Onchain + Anti-Sybil = higher rewards without dilution.
                 </p>
               </div>
             </div>
             <div className="space-y-3 text-sm text-muted-foreground">
               <p>
-                <span className="font-semibold text-foreground">Boost base:</span>{" "}
-                1.0x. Sube a 1.1x si completas una quest de cada tipo.
+                <span className="font-semibold text-foreground">Base boost:</span>{" "}
+                1.0x. Climbs to 1.1x if you complete one quest of each type.
               </p>
               <p>
-                <span className="font-semibold text-foreground">Boost máximo:</span>{" "}
-                1.3x con BrightID + Farcaster verificado + stake simbólico.
+                <span className="font-semibold text-foreground">Maximum boost:</span>{" "}
+                1.3x with BrightID + Farcaster verification + symbolic stake.
               </p>
               <p>
-                Push notifica cada logro. También se puede abrir un chat 1:1 para soporte durante la misión.
+                Push notifies each achievement. Open a 1:1 chat for support during the mission if needed.
               </p>
             </div>
             <div className="rounded-2xl border border-dashed bg-muted/40 p-4 text-sm">
               <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                Medición
+                Measurement
               </p>
               <ul className="mt-2 list-disc space-y-2 pl-5">
-                <li>Tasa de finalización de quests.</li>
-                <li>Tiempo promedio por tipo de quest.</li>
-                <li>CTR de notificaciones (Open vs Delivered).</li>
+                <li>Quest completion rate.</li>
+                <li>Average completion time by quest type.</li>
+                <li>Notification CTR (opened vs. delivered).</li>
               </ul>
             </div>
             <div className="rounded-2xl border bg-primary/10 p-4 text-sm text-primary">
               <ThumbsUp className="mb-2 h-6 w-6" />
               <p>
-                UX tip: copy corto, mobile first. Cada quest se puede guardar para retomar desde cualquier device.
+                UX tip: keep copy concise and mobile-first. Allow users to pause and resume every quest from any device.
               </p>
             </div>
           </aside>

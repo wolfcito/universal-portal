@@ -18,7 +18,7 @@ export function SprayForm() {
       <div className="max-w-md mx-auto p-6 bg-card text-card-foreground rounded-lg shadow-lg border">
         <h2 className="text-2xl font-bold mb-4 text-center">SPRAY</h2>
         <div className="flex justify-center">
-          <LoadingSpinner message="Inicializando aplicación..." />
+          <LoadingSpinner message="Initializing app..." />
         </div>
       </div>
     }>
@@ -36,16 +36,16 @@ function SprayFormContent() {
 
   const handleSubmit = async () => {
     if (!pushChainClient) {
-      return alert('Por favor conecta tu wallet primero');
+      return alert('Please connect your wallet first');
     }
 
     if (!sprayContractAddress) {
-      return alert('Error: SPRAY_CONTRACT no configurado');
+      return alert('Error: SPRAY_CONTRACT is not configured');
     }
 
     const lines = input.trim().split('\n');
     if (lines.length === 0 || (lines.length === 1 && lines[0] === '')) {
-      return alert('Por favor ingresa al menos una dirección y cantidad');
+      return alert('Please enter at least one address and amount');
     }
 
     const to: string[] = [];
@@ -56,12 +56,12 @@ function SprayFormContent() {
         const [addr, amt] = line.split(',').map((s: string) => s.trim());
         
         if (!addr || !amt) {
-          throw new Error(`Formato inválido en línea: ${line}. Debe ser: dirección,cantidad`);
+          throw new Error(`Invalid format on line: ${line}. Expected: address,amount`);
         }
         
-        // Validar dirección
+        // Validate address
         if (!addr.match(/^0x[a-fA-F0-9]{40}$/)) {
-          throw new Error(`Dirección inválida: ${addr}`);
+          throw new Error(`Invalid address: ${addr}`);
         }
         
         to.push(addr);
@@ -91,7 +91,7 @@ function SprayFormContent() {
     try {
       setLoading(true);
       
-      // Codificar los datos de la transacción usando PushChain.utils
+      // Encode transaction data using PushChain utils
       const data = PushChain.utils.helpers.encodeTxData({
         abi: sprayAbi,
         functionName: isToken ? 'sprayToken' : 'sprayEther',
@@ -107,25 +107,25 @@ function SprayFormContent() {
         data: data,
       });
       
-      // Enviar la transacción usando el patrón del Universal Counter App
+      // Send the transaction through the universal pattern
       const tx = await pushChainClient.universal.sendTransaction({
         to: sprayContractAddress,
         value: totalValue,
         data,
       });
 
-      // Esperar a que mine la transacción
+      // Wait for the transaction to be mined
       await tx.wait();
       
       console.log('Transaction successful:', { tx });
-      alert(`¡Éxito! TxHash: ${tx.hash}`);
+      alert(`Success! TxHash: ${tx.hash}`);
       
-      // Limpiar el formulario después del éxito
+      // Reset form after success
       setInput('');
       setTokenAddr('');
     } catch (err) {
-      console.error('Error en la transacción:', err);
-      alert(`Error al enviar la transacción: ${err instanceof Error ? err.message : 'Error desconocido'}`);
+      console.error('Transaction error:', err);
+      alert(`Failed to send transaction: ${err instanceof Error ? err.message : 'Unknown error'}`);
     } finally {
       setLoading(false);
     }
@@ -178,11 +178,11 @@ function SprayFormContent() {
           disabled={loading || !pushChainClient}
           className="w-full py-3 bg-purple-500 text-primary-foreground rounded hover:bg-purple-500/90 disabled:bg-muted disabled:text-muted-foreground disabled:cursor-not-allowed transition-colors"
         >
-          {loading ? 'Enviando…' : 'Spray'}
+          {loading ? 'Sending...' : 'Spray'}
         </button>
       </div>
       
-      {/* Debug Info - Solo mostrar en desarrollo */}
+      {/* Debug info - only render during development */}
       {process.env.NODE_ENV === 'development' && <DebugInfo />}
     </div>
   );

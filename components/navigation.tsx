@@ -5,13 +5,13 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
 const routes = [
-  { href: '/', label: 'Inicio' },
+  { href: '/', label: 'Home' },
   { href: '/spray', label: 'Spray' },
-  { href: '/eligibility', label: 'Elegibilidad' },
+  { href: '/eligibility', label: 'Eligibility' },
   { href: '/quests', label: 'Quests' },
   { href: '/claim', label: 'Claim' },
   { href: '/admin', label: 'Admin' },
-  { href: '/metrics', label: 'Métricas' },
+  { href: '/metrics', label: 'Metrics' },
 ];
 
 export function Navigation() {
@@ -66,7 +66,7 @@ export function Navigation() {
             href="/spray"
             className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
           >
-            Abrir App
+            Open App
           </Link>
         </div>
       </div>

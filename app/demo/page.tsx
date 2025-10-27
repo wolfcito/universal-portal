@@ -2,34 +2,34 @@ import { ArrowRight, ListRestart, Play, StepForward } from "lucide-react";
 
 const steps = [
   {
-    title: "1. Conecto wallet en chain A",
+    title: "1. Connect wallet on chain A",
     detail:
-      "El usuario abre Universal Portal, conecta su wallet (p.ej. Ethereum Sepolia) via universalSigner y observa el debug info.",
-    highlight: "Mostrar universal signer funcionando cross-chain.",
+      "Open Universal Portal, connect the wallet (e.g., Ethereum Sepolia) via the universal signer, and show the debug info.",
+    highlight: "Highlight the universal signer working cross-chain.",
   },
   {
-    title: "2. Completo una quest rápida",
+    title: "2. Complete a quick quest",
     detail:
-      "Abrimos la pantalla de quests, marcamos la misión onchain (min tx en Donut) y recibimos la notificación Push.",
-    highlight: "Resaltar experiencia educativa y CTA mobile-friendly.",
+      "Open the quests screen, mark the onchain mission (min tx on Donut), and show the Push notification.",
+    highlight: "Emphasize the educational experience and mobile-friendly CTA.",
   },
   {
-    title: "3. Paso la elegibilidad",
+    title: "3. Pass eligibility",
     detail:
-      "Vamos a la vista de Eligibility. Mostramos score estimado (Passport ≥ 15 + BrightID) y que el usuario ganó un boost 1.2x.",
-    highlight: "Explicar defensa en profundidad y appeals ligeros.",
+      "Navigate to the Eligibility view. Showcase the estimated score (Passport ≥ 15 + BrightID) and the 1.2x boost.",
+    highlight: "Explain defense in depth and lightweight appeals.",
   },
   {
-    title: "4. Claim en Push Chain (Donut)",
+    title: "4. Claim on Push Chain (Donut)",
     detail:
-      "En la pantalla de claim vemos el formulario, previsualizamos montos, corremos la verificación y damos click en Ejecutar claim universal.",
-    highlight: "Mencionar `pushChainClient.universal.sendTransaction` y Merkle proof.",
+      "On the claim screen, review the form, preview amounts, run the verification, and click Execute universal claim.",
+    highlight: "Mention `pushChainClient.universal.sendTransaction` and the Merkle proof.",
   },
   {
-    title: "5. Notificación instantánea",
+    title: "5. Instant notification",
     detail:
-      "Se dispara la Push Notification con hash, monto y boost aplicado. También se abre el chat de soporte opcional.",
-    highlight: "Refuerzo del core value de Push (alerts + chat).",
+      "Trigger the Push notification with hash, amount, and boost applied. Optionally open the support chat.",
+    highlight: "Reinforce Push's core value (alerts + chat).",
   },
 ];
 
@@ -43,11 +43,11 @@ export default function DemoPage() {
             Demo Script · 2-3 min
           </span>
           <h1 className="mt-4 text-3xl font-bold sm:text-4xl">
-            Storyboard para el Deploython
+            Deploython storyboard
           </h1>
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            Narrativa clara para jurado y comunidad. Ilustra el flujo universal (chain A → Push Chain),
-            cómo combatimos Sybils y la UX de quests. Cada paso tiene highlight y callout técnico.
+            Clear narrative for judges and community. Illustrates the universal flow (chain A → Push Chain),
+            how we fight Sybils, and the quests UX. Every step includes a highlight and technical callout.
           </p>
         </div>
       </section>
@@ -74,11 +74,11 @@ export default function DemoPage() {
         <div className="mt-10 rounded-3xl border border-dashed bg-muted/40 p-6 text-center text-sm text-muted-foreground">
           <ListRestart className="mx-auto mb-3 h-6 w-6 text-primary" />
           <p className="font-semibold text-foreground">
-            Tip de presentación
+            Presentation tip
           </p>
           <p className="mt-2">
-            Mantén la demo fluida: abre tabs de Spray, Eligibility, Quests y Claim antes de empezar.
-            Usa el modal de notificaciones Push para cierre contundente.
+            Keep the demo fluid: preload Spray, Eligibility, Quests, and Claim tabs before starting.
+            Close with the Push notifications modal for a strong finish.
           </p>
         </div>
       </section>

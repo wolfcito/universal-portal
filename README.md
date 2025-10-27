@@ -17,14 +17,14 @@ The app runs on `http://localhost:3000`. Wallet connectivity relies on `@pushcha
 
 | Route | Purpose | Highlights |
 | --- | --- | --- |
-| `/` | Landing | Storyboard: Spray + Anti-Sybil + Quests. Donut infra quick reference. |
-| `/spray` | Spray console | Already functional native/ERC-20 spray using `pushChainClient.universal.sendTransaction`. |
-| `/eligibility` | Anti-Sybil | Threshold definition, stamp weights (Gitcoin Passport, BrightID, Farcaster, Human Passport), risk notes, metrics a seguir. |
-| `/quests` | Quest board | Onchain + social + knowledge missions estilo Layer3. Toggleable mock completion + boosts. |
-| `/claim` | Claim UX | Verificador de score, mock Merkle proof, botón para disparar el claim universal, checklist de seguridad. |
-| `/admin` | Admin board | Flujo CSV/JSON → validación → simulación → publicación Merkle/spray. Historial de lotes y métricas instantáneas. |
-| `/metrics` | KPI dashboard | Métricas MVP: eficacia anti-Sybil, quest completion, tiempo a claim, CTR notificaciones, costos estimados. |
-| `/demo` | Demo script | Guía 2–3 minutos enumerando pasos para la presentación oficial. |
+| `/` | Landing | Storyboard for Spray + Anti-Sybil + Quests with Donut infra quick reference. |
+| `/spray` | Spray console | Functional native/ERC-20 spray powered by `pushChainClient.universal.sendTransaction`. |
+| `/eligibility` | Anti-Sybil | Threshold definition, stamp weights (Gitcoin Passport, BrightID, Farcaster, Human Passport), risk callouts, metrics to track. |
+| `/quests` | Quest board | Layer3-style onchain, social, and knowledge missions with toggleable mock completion + boosters. |
+| `/claim` | Claim UX | Score checker, mock Merkle proof, button to trigger the universal claim, and safety checklist. |
+| `/admin` | Admin board | CSV/JSON → validation → simulation → publish Merkle/spray. Batch history with instant metrics. |
+| `/metrics` | KPI dashboard | MVP KPIs: anti-Sybil effectiveness, quest completion, time to claim, notification CTR, estimated costs. |
+| `/demo` | Demo script | 2–3 minute guide covering the official presentation flow. |
 
 ## Donut testnet essentials
 
@@ -46,57 +46,57 @@ const tx = await pushChainClient.universal.sendTransaction({
 await tx.wait();
 ```
 
-## Anti-Sybil (defensa en profundidad)
+## Anti-Sybil (defense in depth)
 
-- **Threshold base**: Gitcoin Passport score ≥ 15 **o** BrightID verificado.  
+- **Base threshold**: Gitcoin Passport score ≥ 15 **or** verified BrightID.  
 - **Boosts**:
   - BrightID + Farcaster verified: 1.15x
-  - Human Passport (opt-in): 1.05x adicional
-  - Quest “stake simbólico”: +5 score
-- **Estampillas prioritarias**:
-  - Gitcoin Passport: peso 8 (KYC/KYB, social graph, PoH)
-  - BrightID: peso 6 (web-of-trust)
-  - Farcaster: peso 4 (unicidad onchain)
-  - Human Passport: peso 4 (modular PoI)
-- **Heurísticas**: cooldown suave (1 claim/12h por IP/device), chequeos de saldo/antigüedad, detección de duplicados en lotes.
-- **Appeals**: formulario breve + chat Push para resolver falsos negativos.
+  - Human Passport (opt-in): additional 1.05x
+  - “Symbolic stake” quest: +5 score
+- **Priority stamps**:
+  - Gitcoin Passport: weight 8 (KYC/KYB, social graph, PoH)
+  - BrightID: weight 6 (web-of-trust)
+  - Farcaster: weight 4 (onchain uniqueness)
+  - Human Passport: weight 4 (modular PoI)
+- **Heuristics**: soft cooldown (1 claim/12h per IP/device), balance/age checks, duplicate detection in batches.
+- **Appeals**: short form + Push chat to resolve false negatives.
 
-## Quests (activación + pruebas humanas)
+## Quests (activation + human proofs)
 
-- **Tipos**: onchain (tx mínima, stake simbólico), social (follow/cast), knowledge (quiz breve).
-- **Validación**: oráculos/indexers para tx hash + endpoints de stamps; todo se refleja en score y boosters.
-- **UX**: mobile-first, copy bilingüe corto, notificaciones Push para cada hito, posibilidad de retomar progreso.
+- **Types**: onchain (micro tx, symbolic stake), social (follow/cast), knowledge (short quiz).
+- **Validation**: oracles/indexers for tx hashes + stamp endpoints; everything feeds the score and boosters.
+- **UX**: mobile-first, concise copy, Push notifications for each milestone, progress can be resumed on any device.
 
-## Distribución (spray + Merkle)
+## Distribution (spray + Merkle)
 
-- **Spray directo**: batch con límites soft, simulación previa, reporting de gas. Pensado para envíos rápidos donde el emisor asume el costo.
-- **Merkle Distributor** (mock UI, pronto contrato): import CSV/JSON, generación de root, publicación onchain, claim con prueba.
-- **Admin board**: 4 pasos (upload → validar → simular → publicar) con historial de lotes y métricas clave (duplicados, wallets bloqueadas, límite por lote).
+- **Direct spray**: batches with soft limits, pre-flight simulation, gas reporting. Designed for quick drops where the sender pays the cost.
+- **Merkle Distributor** (mock UI, contract coming next): import CSV/JSON, generate the root, publish onchain, claim with proof.
+- **Admin board**: four steps (upload → validate → simulate → publish) with batch history and key metrics (duplicates, blocked wallets, batch limit).
 
-## Métricas MVP
+## MVP metrics
 
-- Eficacia anti-Sybil: 82% (mock) — objetivo > 70%.
-- Quest completion: 64% (usuarios que completan 3/3 misiones base).
-- Tiempo a primer claim: 3m 40s (sandbox).
-- CTR notificaciones Push: 71% (deliveries vs opens).
-- Gas por beneficiario (estimado Donut): Merkle claim ~45k, spray directo ~78k.
+- Anti-Sybil effectiveness: 82% (mock) — target > 70%.
+- Quest completion: 64% (users completing all 3 core quests).
+- Time to first claim: 3m 40s (sandbox).
+- Push notification CTR: 71% (delivered vs. opened).
+- Gas per beneficiary (Donut estimate): Merkle claim ~45k, direct spray ~78k.
 
-## Riesgos & mitigación
+## Risks & mitigation
 
-- **Falsos positivos/negativos**: appeals ligeros + nivel “basic reward” para usuarios borderline.
-- **Bots/granjas**: límites por device, stake simbólico opt-in, análisis de patrones en backend.
-- **Fricción KYC**: opciones privacy-preserving (BrightID, Human Passport) sin biometría para MVP.
-- **Desalineo con Project G.U.D**: demo recalca universal write + notificaciones + UX visible.
+- **False positives/negatives**: lightweight appeals + “basic reward” tier for borderline users.
+- **Bots/farms**: per-device limits, optional symbolic stake, backend pattern analysis.
+- **KYC friction**: privacy-preserving options (BrightID, Human Passport) without biometrics for the MVP.
+- **Misalignment with Project G.U.D**: demo reinforces universal write + notifications + visible UX.
 
-## Próximos pasos sugeridos
+## Suggested next steps
 
-1. Conectar backend ligero (Node/Edge) para cachear Passport score y registrar cooldowns.
-2. Integrar contrato `MerkleDistributor` + generación de proofs desde admin board.
-3. Automatizar notificaciones usando plantillas Push.
-4. Añadir reporte exportable (CSV/JSON + logs) para auditoría post-claim.
+1. Connect a lightweight backend (Node/Edge) to cache Passport scores and record cooldowns.
+2. Integrate the `MerkleDistributor` contract + proof generation from the admin board.
+3. Automate notifications using Push templates.
+4. Add an exportable report (CSV/JSON + logs) for post-claim auditability.
 
-## Créditos
+## Credits
 
 - **Front**: Next.js 16 + TypeScript + TailwindCSS.
-- **Wallet**: `@pushchain/ui-kit` con `PushUniversalWalletProvider`.
+- **Wallet**: `@pushchain/ui-kit` with `PushUniversalWalletProvider`.
 - **Spray contract**: `0x6A9d2E8c356E254f50689aEa5D1E5E8FeaAB03a6` (Donut testnet, mock).

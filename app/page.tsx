@@ -15,26 +15,26 @@ import {
 
 const pillars = [
   {
-    title: "Spray / Airdrop Universal",
-    subtitle: "Envía desde cualquier chain hacia Push Chain (Donut).",
+    title: "Universal Spray / Airdrop",
+    subtitle: "Send from any chain into Push Chain (Donut).",
     description:
-      "Batch nativo + ERC-20 con universalSigner. Integraremos simulación previa, throttling y notificaciones en tiempo real.",
+      "Native and ERC-20 batch flows powered by the universal signer. Includes pre-flight simulation, throttling limits, and live notifications.",
     icon: SquareStack,
     href: "/spray",
   },
   {
     title: "Anti-Sybil Scoring",
-    subtitle: "Defensa por capas sin comprometer la UX.",
+    subtitle: "Layered defense without sacrificing UX.",
     description:
-      "Compatibilidad con Gitcoin Passport, BrightID, Farcaster y Human Passport. Threshold dinámico para eligibility y boosts.",
+      "Supports Gitcoin Passport, BrightID, Farcaster, and Human Passport with dynamic thresholds for eligibility and boosts.",
     icon: ShieldCheck,
     href: "/eligibility",
   },
   {
-    title: "Quests Activadoras",
-    subtitle: "Misiones onchain, sociales y de aprendizaje.",
+    title: "Activation Quests",
+    subtitle: "Onchain, social, and learning missions.",
     description:
-      "Orquestamos quests cortas tipo Layer3 para calentar a los usuarios antes del claim y subir su score.",
+      "Layer3-style micro quests that warm up users before claiming and lift their score.",
     icon: Workflow,
     href: "/quests",
   },
@@ -65,42 +65,42 @@ const infra = [
 
 const flow = [
   {
-    title: "1. Importa audiencias",
+    title: "1. Import audiences",
     detail:
-      "Carga CSV/JSON, valida duplicados y calcula montos. Sprays rápidos o Merkle Trees listos para onchain.",
+      "Upload CSV/JSON files, dedupe recipients, and calculate allocations. Choose between quick sprays or Merkle trees ready for onchain publishing.",
   },
   {
-    title: "2. Refuerza identidad",
+    title: "2. Strengthen identity",
     detail:
-      "Solicita stamps, balancea fricción/privacidad y previsualiza el score con boosters opcionales.",
+      "Request stamps, balance friction versus privacy, and preview the score with optional boosters.",
   },
   {
-    title: "3. Activa con quests",
+    title: "3. Activate with quests",
     detail:
-      "Misiones cortas (tx mínima, social proof, knowledge check) que entregan eligibility gating o multiplicadores.",
+      "Short missions (micro transaction, social proof, knowledge check) that unlock eligibility gates or reward multipliers.",
   },
   {
-    title: "4. Claim universal",
+    title: "4. Universal claim",
     detail:
-      "Desde cualquier chain → Push Chain. Claim seguro con Merkle proof, simulación y recibo vía Push Notif.",
+      "Any chain → Push Chain. Secure claim with Merkle proof, simulation preview, and Push-powered receipt.",
   },
 ];
 
 const metrics = [
   {
-    title: "Eficacia Anti-Sybil",
+    title: "Anti-Sybil Effectiveness",
     value: "82%",
-    description: "% de wallets con ≥1 stamp y score ≥ threshold.",
+    description: "% of wallets with ≥1 stamp reaching the threshold.",
   },
   {
-    title: "Tiempo a Claim",
+    title: "Time to Claim",
     value: "3m 40s",
-    description: "Desde onboarding hasta claim exitoso en sandbox.",
+    description: "Onboarding to successful claim in the sandbox flow.",
   },
   {
-    title: "Costo promedio",
+    title: "Average Gas Cost",
     value: "~45k gas",
-    description: "Merkle claim en Donut vs spray directo (testnet).",
+    description: "Merkle claim on Donut versus direct spray (testnet).",
   },
 ];
 
@@ -118,27 +118,21 @@ export default function LandingPage() {
               Universal Portal: Spray/Airdrop + Anti-Sybil + Quests
             </h1>
             <p className="max-w-2xl text-base text-muted-foreground sm:text-lg">
-              Demo listo para Deploython Project G.U.D. Diseñado para mostrar
-              cross-chain write hacia Push Chain, distribución eficiente, defensa
-              en profundidad contra Sybil y misiones de activación fáciles de
-              seguir. Copy bilingüe corto listo para demo:{" "}
-              <span className="font-medium text-foreground">
-                “Claim your Donut rewards safely · Recompensas sin Sybils”.
-              </span>
+              Deploython-ready demo built to highlight cross-chain writes into Push Chain, efficient distribution tooling, layered anti-Sybil scoring, and activation quests that are easy to follow during a live presentation.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/spray"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
               >
-                Abrir Spray Console
+                Open Spray Console
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/demo"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
               >
-                Script de Demo
+                Demo Script
                 <Clock className="h-4 w-4" />
               </Link>
             </div>
@@ -169,8 +163,7 @@ export default function LandingPage() {
                   Universal TX Flow
                 </p>
                 <p className="text-sm text-foreground">
-                  Conecta en Ethereum, ejecuta claim en Push Chain Donut con
-                  `pushChainClient.universal.sendTransaction`.
+                  Connect on Ethereum, execute the claim on Push Chain Donut via `pushChainClient.universal.sendTransaction`.
                 </p>
               </div>
             </div>
@@ -180,7 +173,7 @@ export default function LandingPage() {
                 <div>
                   <p className="text-sm font-semibold">Eligibility Snapshot</p>
                   <p className="text-xs text-muted-foreground">
-                    Passport ≥ 15 o BrightID + Farcaster = Boost 1.2x
+                    Passport ≥ 15 or BrightID + Farcaster = 1.2x boost
                   </p>
                 </div>
               </div>
@@ -195,7 +188,7 @@ export default function LandingPage() {
                 </div>
                 <div className="flex items-center justify-between rounded-lg bg-muted/60 px-3 py-2">
                   <span>Claim stage</span>
-                  <span className="font-semibold text-primary">Listo</span>
+                  <span className="font-semibold text-primary">Ready</span>
                 </div>
               </div>
             </div>
@@ -204,7 +197,7 @@ export default function LandingPage() {
               <div className="space-y-1">
                 <p className="text-sm font-semibold">Push Notifications</p>
                 <p className="text-xs text-muted-foreground">
-                  Eligibilidad aprobada, completaste quest, claim confirmado.
+                  Eligibility approved, quest completed, claim confirmed.
                 </p>
               </div>
             </div>
@@ -233,7 +226,7 @@ export default function LandingPage() {
                   href={pillar.href}
                   className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
                 >
-                  Ver pantalla
+                  View screen
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -250,12 +243,11 @@ export default function LandingPage() {
               Cross-chain → Push Chain
             </span>
             <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-              Encaje con Project G.U.D y Donut infra
+              Alignment with Project G.U.D and Donut infrastructure
             </h2>
             <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-              Ponemos énfasis en UX visible, composabilidad y medición. Los
-              bloques siguientes se documentan en README y se replican en scripts
-              de despliegue.
+              We emphasize visible UX, composability, and measurement. The
+              building blocks below are documented in the README and mirrored in deployment scripts.
             </p>
             <div className="mt-6 grid gap-4">
               {flow.map((stage) => (
@@ -311,25 +303,23 @@ export default function LandingPage() {
               Deploython Focus
             </span>
             <h2 className="text-3xl font-bold sm:text-4xl">
-              ¿Qué se evalúa? Funcionalidad visible y diseño claro.
+              What do judges evaluate? Visible functionality and clear design.
             </h2>
             <p className="text-sm text-muted-foreground sm:text-base">
-              El demo muestra la historia completa en menos de 3 minutos.
-              Reforzamos los highlights con un tablero admin, verificador de
-              elegibilidad y métricas accionables.
+              The demo tells the full story in under three minutes. We reinforce the highlights with an admin board, an eligibility checker, and actionable metrics.
             </p>
             <div className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
               <span className="rounded-full border border-dashed px-3 py-1">
-                UX enfocada
+                Focused UX
               </span>
               <span className="rounded-full border border-dashed px-3 py-1">
-                Notificaciones Push
+                Push notifications
               </span>
               <span className="rounded-full border border-dashed px-3 py-1">
                 Cross-chain ready
               </span>
               <span className="rounded-full border border-dashed px-3 py-1">
-                Airdrop seguro
+                Secure airdrop
               </span>
             </div>
           </div>
@@ -338,38 +328,38 @@ export default function LandingPage() {
               <Sprout className="h-8 w-8" />
               <div>
                 <p className="text-sm font-semibold uppercase tracking-wide">
-                  Roadmap corto
+                  Condensed roadmap
                 </p>
                 <p className="text-xs text-primary/90">
-                  MVP en 1 semana, listo para iterar hacia mainnet.
+                  One-week MVP, ready to iterate toward mainnet.
                 </p>
               </div>
             </div>
             <div className="mt-5 space-y-4 text-sm text-muted-foreground">
               <p>
                 <span className="font-semibold text-foreground">
-                  Día 1-2:
+                  Days 1-2:
                 </span>{" "}
-                Import + simulaciones + UI universal signer.
+                Imports, simulations, universal signer UI.
               </p>
               <p>
                 <span className="font-semibold text-foreground">
-                  Día 3-4:
+                  Days 3-4:
                 </span>{" "}
-                Score Anti-Sybil, quests iniciales, copy bilingüe.
+                Anti-Sybil scoring, initial quests, polished copy.
               </p>
               <p>
                 <span className="font-semibold text-foreground">
-                  Día 5-7:
+                  Days 5-7:
                 </span>{" "}
-                Notificaciones, métricas, script demo, polish visual.
+                Notifications, metrics, demo script, visual polish.
               </p>
             </div>
             <Link
               href="/admin"
               className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
             >
-              Ver tablero Admin
+              Open Admin Board
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

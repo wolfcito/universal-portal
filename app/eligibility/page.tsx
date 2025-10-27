@@ -62,19 +62,19 @@ export default function EligibilityPage() {
           <div className="flex-1 space-y-4">
             <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
               <ShieldHalf className="h-4 w-4" />
-              Anti-Sybil · Defense in depth
+              Anti-Sybil · Commercial-grade defenses
             </span>
             <h1 className="text-3xl font-bold sm:text-4xl">
-              Clear eligibility, transparent scoring.
+              Stop bots without slowing paying users.
             </h1>
             <p className="text-sm text-muted-foreground sm:text-base">
-              We combine verifiable stamps, lightweight heuristics, and low-friction UX. Participants know what they need and how to raise their score before attempting a claim.
+              Combine verifiable stamps, smart heuristics, and friendly copy so customers see exactly how to qualify. Every control is adjustable, every rule is explained, and the UX keeps momentum high.
             </p>
             <div className="flex items-center gap-3 rounded-2xl border bg-card p-4 shadow-sm">
               <Info className="h-10 w-10 rounded-full bg-muted p-2 text-primary" />
               <div className="text-sm text-muted-foreground">
                 <p className="font-semibold text-foreground">
-                  Baseline eligibility · Choose at least one route:
+                  Clear paths to eligibility; choose at least one route:
                 </p>
                 <ul className="mt-2 list-disc space-y-1 pl-5">
                   <li>
@@ -147,10 +147,10 @@ export default function EligibilityPage() {
         <div className="flex flex-col gap-10 lg:flex-row">
           <div className="flex-1 space-y-4">
             <h2 className="text-2xl font-bold sm:text-3xl">
-              Priority stamps for the MVP
+              High-trust signals we launch with
             </h2>
             <p className="text-sm text-muted-foreground">
-              Each stamp adds weighted points. Required endpoints and contracts are documented in the README.
+              Each stamp adds weighted points with documentation ready for due diligence. Show prospects the path today and layer in new credentials tomorrow.
             </p>
             <div className="space-y-4">
               {stampMatrix.map((stamp) => (
@@ -187,7 +187,7 @@ export default function EligibilityPage() {
                     Known risks
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    Farming rings sharing stamps, false negatives failing Passport checks.
+                    We watch for stamp-farming rings and edge cases so your support team stays ahead of issues.
                   </p>
                 </div>
               </div>
@@ -222,9 +222,9 @@ export default function EligibilityPage() {
                   <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
                     How we measure
                   </p>
-                  <p className="text-sm text-muted-foreground">
-                    Metrics surface on the metrics page and are summarized in the README.
-                  </p>
+              <p className="text-sm text-muted-foreground">
+                    Share these KPIs in board decks, with metrics synced to the dashboard and the README so everyone sees the same truth.
+              </p>
                 </div>
               </div>
               <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-muted-foreground">

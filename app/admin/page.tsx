@@ -59,14 +59,13 @@ export default function AdminPage() {
           <div className="flex-1 space-y-4">
             <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
               <Workflow className="h-4 w-4" />
-              Admin · Spray & Merkle
+              Admin · Operations control
             </span>
             <h1 className="text-3xl font-bold sm:text-4xl">
-              Operations board: import, validate, and publish distributions.
+              Command center for imports, validation, and publication.
             </h1>
             <p className="text-sm text-muted-foreground sm:text-base">
-              Designed for small teams. Every step is auditable, with pre-flight simulations and optional anti-Sybil controls.
-              This view shows demo-ready mock data.
+              Built for lean teams that still need enterprise polish. Every step is auditable, simulations happen before funds move, and Anti-Sybil controls stay one click away. Demo-ready mock data included.
             </p>
             <div className="flex flex-wrap gap-3 text-xs uppercase tracking-wide text-muted-foreground">
               <span className="inline-flex items-center gap-2 rounded-full border border-dashed px-3 py-1">
@@ -89,10 +88,10 @@ export default function AdminPage() {
             </p>
             <div className="mt-6 space-y-4">
               {[
-                { key: "upload", label: "1. Upload dataset", description: "CSV/JSON with address,amount,score" },
-                { key: "validate", label: "2. Validate duplicates & stamps", description: "Checksum checks, threshold application" },
-                { key: "preview", label: "3. Simulate gas and amounts", description: "Preview direct spray or Merkle claim" },
-                { key: "publish", label: "4. Publish root / execute spray", description: "Universal signature + notification" },
+                { key: "upload", label: "1. Upload dataset", description: "CSV/JSON with address, amount, score, built for marketing exports." },
+                { key: "validate", label: "2. Validate duplicates & stamps", description: "Checksum checks, threshold application, and fraud heuristics." },
+                { key: "preview", label: "3. Simulate gas and amounts", description: "Compare direct spray vs. Merkle claim before the approver signs." },
+                { key: "publish", label: "4. Publish root / execute spray", description: "Universal signature + notification with a downloadable audit trail." },
               ].map(({ key, label, description }) => {
                 const isActive = step === key;
                 const isDone =
@@ -142,7 +141,7 @@ export default function AdminPage() {
           <div className="space-y-4">
             <h2 className="text-2xl font-bold sm:text-3xl">Batch history</h2>
             <p className="text-sm text-muted-foreground">
-              Clear logs for the Deploython demo. Every batch shows who uploaded it, when, and its current status.
+              Clear logs for demos and diligence alike. Surface who uploaded what, when it was reviewed, and the status investors expect to see.
             </p>
             <div className="overflow-hidden rounded-2xl border shadow-sm">
               <table className="min-w-full divide-y divide-border">
@@ -194,11 +193,11 @@ export default function AdminPage() {
             <div className="space-y-3 text-sm text-muted-foreground">
               <p>
                 <span className="font-semibold text-foreground">Duplicates:</span>{" "}
-                3 detected (auto-removed with downloadable logs).
+                3 detected; auto-removed with downloadable logs for compliance.
               </p>
               <p>
                 <span className="font-semibold text-foreground">Blocked wallets:</span>{" "}
-                2 for score &lt; 12. Suggest sending them tutorial quests.
+                2 for score &lt; 12. Recommend nudging them toward educational quests.
               </p>
               <p>
                 <span className="font-semibold text-foreground">Direct spray:</span>{" "}
@@ -210,7 +209,7 @@ export default function AdminPage() {
               <ul className="mt-2 space-y-2">
                 <li>
                   <Upload className="mr-2 inline h-4 w-4" />
-                  Google Sheets / Airtable integration.
+                  Google Sheets / Airtable integration for growth teams.
                 </li>
                 <li>
                   <Bolt className="mr-2 inline h-4 w-4" />

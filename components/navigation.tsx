@@ -23,7 +23,7 @@ export function Navigation() {
     <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center space-x-2">
-          <div className="relative h-10 w-10 overflow-hidden rounded-full border border-primary/40 bg-primary/10">
+          <div className="relative h-10 w-10 overflow-hidden">
             <Image
               src={LogoImage}
               alt="Universal Portal logo"
@@ -37,7 +37,7 @@ export function Navigation() {
             <span className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
               Universal Portal
             </span>
-            <span className="text-base font-bold">Spray & Anti-Sybil</span>
+            <span className="text-base font-bold">Growth Campaign Engine</span>
           </div>
         </Link>
 

@@ -6,7 +6,10 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "eslint .",
-    "start": "next start"
+    "start": "next start",
+    "bmad:refresh": "bmad-method install -f -i codex",
+    "bmad:list": "bmad-method list:agents",
+    "bmad:validate": "bmad-method validate"
   },
   "dependencies": {
     "@hookform/resolvers": "3.10.0",

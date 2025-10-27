@@ -64,22 +64,22 @@ export default function MetricsPage() {
           <div className="flex-1 space-y-4">
             <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
               <Activity className="h-4 w-4" />
-              Metrics · MVP Deploython
+              Metrics · Growth narrative
             </span>
             <h1 className="text-3xl font-bold sm:text-4xl">
-              Actionable indicators for spray, anti-Sybil, and quests.
+              Commercial metrics that keep decision-makers leaning in.
             </h1>
             <p className="text-sm text-muted-foreground sm:text-base">
-              This view answers the fast questions: is scoring working, how well do quests convert, how much gas are we spending, are we delivering value? Tuned for demos and stakeholder reviews.
+              Answer the fast questions stakeholders ask: is scoring working, do quests move the needle, how efficient are we, are notifications delivering value? Perfect for demos, board decks, and follow-up emails.
             </p>
             <div className="rounded-2xl border bg-card p-4 shadow-sm">
               <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                 MVP targets
               </p>
               <ul className="mt-2 list-disc space-y-2 pl-5 text-sm text-muted-foreground">
-                <li>Anti-Sybil effectiveness &gt; 70%.</li>
-                <li>Quest completion rate &gt; 60%.</li>
-                <li>Time to claim &lt; 5 minutes.</li>
+                <li>Anti-Sybil effectiveness &gt; 70% to satisfy risk teams.</li>
+                <li>Quest completion rate &gt; 60% to prove activation.</li>
+                <li>Time to claim &lt; 5 minutes to highlight UX wins.</li>
               </ul>
             </div>
           </div>
@@ -114,7 +114,7 @@ export default function MetricsPage() {
                   Weekly approval rate
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  Mock trend based on sandbox data (target &gt; 75%).
+                  Mock trend based on sandbox data that showcases steady growth toward the 75% target.
                 </p>
               </div>
             </div>
@@ -171,13 +171,13 @@ export default function MetricsPage() {
                     Upcoming experiments
                   </p>
                   <p className="text-xs text-muted-foreground">
-                    Ideas to explore after the Deploython.
+                    Ideas we test next to keep the story fresh post-Deploython.
                   </p>
                 </div>
               </div>
               <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-muted-foreground">
-                <li>Segment boosters by tenure on Push Chain.</li>
-                <li>Use targeted notifications (score personalization).</li>
+                <li>Segment boosters by tenure on Push Chain to reward loyalists.</li>
+                <li>Use targeted notifications with score personalization.</li>
                 <li>A/B test quest copy to increase completion rate.</li>
               </ul>
             </div>
@@ -190,7 +190,7 @@ export default function MetricsPage() {
           <div className="flex-1 space-y-4">
             <h2 className="text-2xl font-bold sm:text-3xl">Estimated costs</h2>
             <p className="text-sm text-muted-foreground">
-              Compare direct spray versus Merkle claim. Goal: keep gas per beneficiary as low as possible.
+              Compare direct spray versus Merkle claim to show finance teams how we protect budget while scaling reach.
             </p>
             <div className="space-y-3">
               {comparisons.map((item) => (
@@ -224,13 +224,13 @@ export default function MetricsPage() {
             </div>
             <div className="mt-6 space-y-4 text-sm text-muted-foreground">
               <p>
-                <span className="font-semibold text-foreground">82% effectiveness</span> shows layered anti-Sybil defenses stop abuse without blocking legitimate users.
+                <span className="font-semibold text-foreground">82% effectiveness</span> shows layered Anti-Sybil defenses block abuse without hurting growth.
               </p>
               <p>
-                <span className="font-semibold text-foreground">64% quests completed</span> validates the Layer3-style educational approach.
+                <span className="font-semibold text-foreground">64% quests completed</span> validates the Layer3-style educational approach and ties quests to revenue impact.
               </p>
               <p>
-                <span className="font-semibold text-foreground">Optimized gas</span> thanks to the MerkleDistributor and pre-flight simulation.
+                <span className="font-semibold text-foreground">Optimized gas</span> thanks to the MerkleDistributor and pre-flight simulation, a handle CFOs will appreciate.
               </p>
             </div>
           </div>

@@ -37,14 +37,13 @@ export default function ClaimPage() {
           <div className="flex-1 space-y-4">
             <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
               <HandCoins className="h-4 w-4" />
-              Claim · Universal Write
+              Claim · Universal write
             </span>
             <h1 className="text-3xl font-bold sm:text-4xl">
-              Claim your rewards directly on Push Chain (Donut).
+              Deliver rewards with clarity and confidence.
             </h1>
             <p className="text-sm text-muted-foreground sm:text-base">
-              Verify your score, surface the Merkle proof (when applicable), and execute the universal transaction.
-              The UX puts clarity first: eligibility before spending gas, reward previews, and integrated notifications.
+              Let users verify their score, surface Merkle proofs, and execute the universal transaction without second guessing. The flow prioritizes transparency so support tickets stay low and satisfaction stays high.
             </p>
             <div className="rounded-2xl border bg-card p-4 shadow-sm">
               <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
@@ -53,15 +52,15 @@ export default function ClaimPage() {
               <ol className="mt-2 space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 text-primary" />
-                  Connect your wallet (any compatible L1/L2).
+                  Connect your wallet from any compatible L1/L2. No context switching required.
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 text-primary" />
-                  Run verification → see score + status in seconds.
+                  Run verification to surface score + status before any gas is spent.
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 text-primary" />
-                  If eligible, sign and send the universal tx toward Donut.
+                  If eligible, sign and send the universal tx toward Donut with full proof transparency.
                 </li>
               </ol>
             </div>
@@ -145,7 +144,7 @@ export default function ClaimPage() {
               )}
               {status === "idle" && (
                 <p className="mt-4 text-xs text-muted-foreground">
-                  Tip: let users preview the outcome before signing. Saves gas and reduces support tickets.
+                  Tip: previewing eligibility before signing builds trust, saves gas, and keeps support queues clear.
                 </p>
               )}
             </div>
@@ -156,54 +155,54 @@ export default function ClaimPage() {
       <section className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold sm:text-3xl">Safety checklist</h2>
+            <h2 className="text-2xl font-bold sm:text-3xl">Trust checklist</h2>
             <ul className="space-y-4 text-sm text-muted-foreground">
               <li className="flex items-start gap-3 rounded-2xl border bg-card p-4 shadow-sm">
                 <ClipboardList className="mt-1 h-6 w-6 text-primary" />
                 <div>
                   <p className="font-semibold text-foreground">Pre-flight simulation</p>
-                  <p>Use `pushChainClient.universal.sendTransaction` with simulation before execution to surface gas costs and potential failures.</p>
+                  <p>Simulate every transaction with `pushChainClient.universal.sendTransaction` so finance teams see costs and risks upfront.</p>
                 </div>
               </li>
               <li className="flex items-start gap-3 rounded-2xl border bg-card p-4 shadow-sm">
                 <Copy className="mt-1 h-6 w-6 text-primary" />
                 <div>
                   <p className="font-semibold text-foreground">Transparent proofs</p>
-                  <p>Users can download their Merkle proof or export quest evidence for auditability.</p>
+                  <p>Let users download Merkle proofs or quest evidence for auditability and compliance conversations.</p>
                 </div>
               </li>
               <li className="flex items-start gap-3 rounded-2xl border bg-card p-4 shadow-sm">
                 <Sparkles className="mt-1 h-6 w-6 text-primary" />
                 <div>
                   <p className="font-semibold text-foreground">Instant notification</p>
-                  <p>Push sends a receipt with hash, amount, and applied boost. On failure, guide them through a retry.</p>
+                  <p>Push fires receipts with hash, amount, and applied boost, and guides retries automatically if something fails.</p>
                 </div>
               </li>
             </ul>
           </div>
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold sm:text-3xl">What do we measure here?</h2>
+            <h2 className="text-2xl font-bold sm:text-3xl">Conversion metrics to spotlight</h2>
             <div className="rounded-3xl border bg-card p-6 shadow-lg">
               <div className="space-y-3 text-sm text-muted-foreground">
                 <p>
                   <span className="font-semibold text-foreground">Conversion funnel:</span>{" "}
-                  Checker entries → confirmed claims.
+                  Checker entries → confirmed claims, ready for investor or partner updates.
                 </p>
                 <p>
                   <span className="font-semibold text-foreground">Errors:</span>{" "}
-                  Most common reasons (invalid proof, insufficient score, cooldown active).
+                  Most common reasons (invalid proof, insufficient score, cooldown active) so teams can triage fast.
                 </p>
                 <p>
                   <span className="font-semibold text-foreground">Timing:</span>{" "}
-                  From "Check" to confirmed hash (for UX tuning).
+                  From "Check" to confirmed hash, giving a tangible proof of customer effort saved.
                 </p>
               </div>
               <div className="mt-5 rounded-2xl border border-dashed bg-muted/50 p-4 text-xs text-muted-foreground">
                 <p className="font-semibold uppercase tracking-wide">Next steps</p>
                 <ul className="mt-2 space-y-2">
-                  <li>Integrate the real MerkleDistributor.</li>
-                  <li>Ship a backend scoring endpoint (cache + rate limit).</li>
-                  <li>Automate notifications with Push templates.</li>
+                  <li>Integrate the production MerkleDistributor for mainnet launches.</li>
+                  <li>Ship a backend scoring endpoint (cache + rate limit) for enterprise SLAs.</li>
+                  <li>Automate notifications with Push templates for consistent brand voice.</li>
                 </ul>
               </div>
             </div>

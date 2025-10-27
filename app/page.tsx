@@ -15,49 +15,48 @@ import {
 
 const pillars = [
   {
-    title: "Universal Spray / Airdrop",
-    subtitle: "Send from any chain into Push Chain (Donut).",
+    title: "Universal Spray Engine",
+    subtitle: "Reward any audience in minutes.",
     description:
-      "Native and ERC-20 batch flows powered by the universal signer. Includes pre-flight simulation, throttling limits, and live notifications.",
+      "Upload lists from any chain and settle on Push Chain with universal signatures, live simulations, and receipts that keep teams aligned.",
     icon: SquareStack,
     href: "/spray",
   },
   {
-    title: "Anti-Sybil Scoring",
-    subtitle: "Layered defense without sacrificing UX.",
+    title: "Layered Anti-Sybil Intelligence",
+    subtitle: "Protect incentives without killing growth.",
     description:
-      "Supports Gitcoin Passport, BrightID, Farcaster, and Human Passport with dynamic thresholds for eligibility and boosts.",
+      "Blend Passport, BrightID, Farcaster, and Human Passport signals with adjustable thresholds so legit users sail through while bots drop off.",
     icon: ShieldCheck,
     href: "/eligibility",
   },
   {
-    title: "Activation Quests",
-    subtitle: "Onchain, social, and learning missions.",
+    title: "Activation Quest Studio",
+    subtitle: "Convert curious visitors into power users.",
     description:
-      "Layer3-style micro quests that warm up users before claiming and lift their score.",
+      "Craft onchain, social, and learning quests that teach the story, warm wallets, and unlock boosted rewards before the claim moment.",
     icon: Workflow,
     href: "/quests",
   },
 ];
-
 const infra = [
   {
-    title: "Donut Testnet Essentials",
+    title: "Donut Testnet - Quick Start",
     items: [
       { label: "RPC HTTP", value: "https://rpc.pushchain.tech" },
       { label: "RPC WSS", value: "wss://rpc.pushchain.tech/ws" },
       { label: "Chain ID", value: "12227331" },
       { label: "Explorer", value: "https://explorer.pushchain.tech" },
       { label: "Faucet", value: "https://faucet.push.org" },
-      { label: "Network name", value: "Push Chain Donut" },
+      { label: "Network", value: "Push Chain Donut" },
     ],
   },
   {
-    title: "Universal SDK Hooks",
+    title: "Universal SDK - Hooks we use",
     items: [
       { label: "Signer", value: "`universalSigner`" },
-      { label: "Tx helper", value: "`pushChainClient.universal.sendTransaction`" },
-      { label: "Notif core", value: "Push Chat + Notifications" },
+      { label: "TX helper", value: "`pushChainClient.universal.sendTransaction`" },
+      { label: "Notifications", value: "Push Chat + Notifications" },
       { label: "UI Kit", value: "@pushchain/ui-kit" },
     ],
   },
@@ -65,42 +64,42 @@ const infra = [
 
 const flow = [
   {
-    title: "1. Import audiences",
+    title: "1) Import and segment audiences",
     detail:
-      "Upload CSV/JSON files, dedupe recipients, and calculate allocations. Choose between quick sprays or Merkle trees ready for onchain publishing.",
+      "Drag in CSV/JSON from any chain, auto-dedupe wallets, and size allocations before choosing spray or Merkle delivery.",
   },
   {
-    title: "2. Strengthen identity",
+    title: "2) Activate layered identity checks",
     detail:
-      "Request stamps, balance friction versus privacy, and preview the score with optional boosters.",
+      "Toggle the right stamp providers, balance friction vs conversion, and show users exactly how to qualify in plain English.",
   },
   {
-    title: "3. Activate with quests",
+    title: "3) Drive action with quests",
     detail:
-      "Short missions (micro transaction, social proof, knowledge check) that unlock eligibility gates or reward multipliers.",
+      "Launch micro-quests that teach the product story, trigger aha moments, and stack multipliers so rewards feel earned.",
   },
   {
-    title: "4. Universal claim",
+    title: "4) Settle claims universally",
     detail:
-      "Any chain → Push Chain. Secure claim with Merkle proof, simulation preview, and Push-powered receipt.",
+      "Let users connect from their home chain, finalize on Push Chain with simulations and proofs, and close the loop with instant receipts.",
   },
 ];
 
 const metrics = [
   {
-    title: "Anti-Sybil Effectiveness",
+    title: "Qualified wallets",
     value: "82%",
-    description: "% of wallets with ≥1 stamp reaching the threshold.",
+    description: "Wallets that clear Sybil checks without manual review.",
   },
   {
-    title: "Time to Claim",
+    title: "Speed to reward",
     value: "3m 40s",
-    description: "Onboarding to successful claim in the sandbox flow.",
+    description: "Average journey from landing page to confirmed claim.",
   },
   {
-    title: "Average Gas Cost",
+    title: "Gas per claim",
     value: "~45k gas",
-    description: "Merkle claim on Donut versus direct spray (testnet).",
+    description: "Merkle execution on Donut compared with direct spray.",
   },
 ];
 
@@ -112,13 +111,13 @@ export default function LandingPage() {
           <div className="flex flex-1 flex-col gap-6">
             <span className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary">
               <Sparkle className="h-4 w-4" />
-              Universal App · Push Chain Donut
+              Growth Engine · Push Chain Donut
             </span>
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              Universal Portal: Spray/Airdrop + Anti-Sybil + Quests
+              Launch high-converting reward campaigns on Push Chain.
             </h1>
             <p className="max-w-2xl text-base text-muted-foreground sm:text-lg">
-              Deploython-ready demo built to highlight cross-chain writes into Push Chain, efficient distribution tooling, layered anti-Sybil scoring, and activation quests that are easy to follow during a live presentation.
+              Universal Portal packages cross-chain distribution, layered Sybil defense, and gamified quests into one commercial-ready experience. Sell the narrative, ship the campaign, and measure the ROI from day one.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Link
@@ -163,7 +162,7 @@ export default function LandingPage() {
                   Universal TX Flow
                 </p>
                 <p className="text-sm text-foreground">
-                  Connect on Ethereum, execute the claim on Push Chain Donut via `pushChainClient.universal.sendTransaction`.
+                  Connect from Ethereum or any supported L2, finalize on Push Chain Donut with the universal signer, and keep the story consistent on every screen.
                 </p>
               </div>
             </div>
@@ -173,12 +172,12 @@ export default function LandingPage() {
                 <div>
                   <p className="text-sm font-semibold">Eligibility Snapshot</p>
                   <p className="text-xs text-muted-foreground">
-                    Passport ≥ 15 or BrightID + Farcaster = 1.2x boost
-                  </p>
-                </div>
+                    Passport ≥ 15 or BrightID + Farcaster = 1.2x boost. Communicate the rules before users spend gas.
+                </p>
               </div>
-              <div className="mt-3 space-y-3 text-xs text-muted-foreground">
-                <div className="flex items-center justify-between rounded-lg bg-muted/60 px-3 py-2">
+            </div>
+            <div className="mt-3 space-y-3 text-xs text-muted-foreground">
+              <div className="flex items-center justify-between rounded-lg bg-muted/60 px-3 py-2">
                   <span>Stamp score</span>
                   <span className="font-semibold text-foreground">18 / 25</span>
                 </div>
@@ -197,7 +196,7 @@ export default function LandingPage() {
               <div className="space-y-1">
                 <p className="text-sm font-semibold">Push Notifications</p>
                 <p className="text-xs text-muted-foreground">
-                  Eligibility approved, quest completed, claim confirmed.
+                  Eligibility approved, quest completed, claim confirmed. Fully branded alerts close the loop with your community.
                 </p>
               </div>
             </div>
@@ -243,11 +242,10 @@ export default function LandingPage() {
               Cross-chain → Push Chain
             </span>
             <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-              Alignment with Project G.U.D and Donut infrastructure
+              Commercial campaigns powered by Project G.U.D infrastructure
             </h2>
             <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-              We emphasize visible UX, composability, and measurement. The
-              building blocks below are documented in the README and mirrored in deployment scripts.
+              Replace ad-hoc scripts with a branded experience that is easy to sell. Every building block below is documented, measurable, and mirrored in deployment scripts so you can move from demo to production without rewriting the story.
             </p>
             <div className="mt-6 grid gap-4">
               {flow.map((stage) => (
@@ -300,17 +298,17 @@ export default function LandingPage() {
           <div className="flex-1 space-y-4">
             <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
               <CircleDot className="h-3.5 w-3.5" />
-              Deploython Focus
+              Why teams choose Universal Portal
             </span>
             <h2 className="text-3xl font-bold sm:text-4xl">
-              What do judges evaluate? Visible functionality and clear design.
+              Turn every demo into a commercial win.
             </h2>
             <p className="text-sm text-muted-foreground sm:text-base">
-              The demo tells the full story in under three minutes. We reinforce the highlights with an admin board, an eligibility checker, and actionable metrics.
+              Lead with value in under three minutes: showcase cross-chain distribution, human-resistant scoring, and activation quests that actually convert. The supporting views (admin, eligibility, metrics) reinforce the story for buyers and partners.
             </p>
             <div className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
               <span className="rounded-full border border-dashed px-3 py-1">
-                Focused UX
+                Conversion-first UX
               </span>
               <span className="rounded-full border border-dashed px-3 py-1">
                 Push notifications
@@ -331,7 +329,7 @@ export default function LandingPage() {
                   Condensed roadmap
                 </p>
                 <p className="text-xs text-primary/90">
-                  One-week MVP, ready to iterate toward mainnet.
+                  One-week MVP, market-ready for pilots and partner showcases.
                 </p>
               </div>
             </div>
@@ -340,19 +338,19 @@ export default function LandingPage() {
                 <span className="font-semibold text-foreground">
                   Days 1-2:
                 </span>{" "}
-                Imports, simulations, universal signer UI.
+                Stand up branded imports, simulations, and universal signer UI.
               </p>
               <p>
                 <span className="font-semibold text-foreground">
                   Days 3-4:
                 </span>{" "}
-                Anti-Sybil scoring, initial quests, polished copy.
+                Launch layered Anti-Sybil scoring, first quests, and sales-ready copy.
               </p>
               <p>
                 <span className="font-semibold text-foreground">
                   Days 5-7:
                 </span>{" "}
-                Notifications, metrics, demo script, visual polish.
+                Wire up automated notifications, dashboards, and a demo script that closes deals.
               </p>
             </div>
             <Link

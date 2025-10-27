@@ -95,10 +95,10 @@ export default function QuestsPage() {
               Quests · Human activation
             </span>
             <h1 className="text-3xl font-bold sm:text-4xl">
-              Short missions, measurable impact, real boosts.
+              Short missions that turn curiosity into loyalty.
             </h1>
             <p className="text-sm text-muted-foreground sm:text-base">
-              We combine onchain, social, and learning actions. The board shows live progress and unlocks claiming once minimum requirements are met.
+              Mix onchain, social, and learning actions to educate wallets and increase intent. Progress updates in real time and unlocks claiming the moment requirements are hit.
             </p>
             <div className="flex items-center gap-4 rounded-2xl border bg-card p-4 shadow-sm">
               <BadgeCheck className="h-10 w-10 rounded-full bg-muted p-2 text-primary" />
@@ -107,7 +107,7 @@ export default function QuestsPage() {
                   MVP rule: complete 1 onchain quest + 1 social quest + the knowledge check.
                 </p>
                 <p className="mt-2">
-                  Every quest adds score. Some provide multipliers to amplify the final reward.
+                  Every quest grows the score. Selected ones unlock multipliers so customers feel rewarded for going deeper.
                 </p>
               </div>
             </div>
@@ -201,21 +201,21 @@ export default function QuestsPage() {
                   Multipliers
                 </p>
                 <p className="text-xs text-primary/80">
-                  Onchain + Anti-Sybil = higher rewards without dilution.
+                  Combine quests and Anti-Sybil to unlock richer rewards without diluting your budget.
                 </p>
               </div>
             </div>
             <div className="space-y-3 text-sm text-muted-foreground">
               <p>
                 <span className="font-semibold text-foreground">Base boost:</span>{" "}
-                1.0x. Climbs to 1.1x if you complete one quest of each type.
+                1.0x. Climbs to 1.1x when users finish one quest of each type.
               </p>
               <p>
                 <span className="font-semibold text-foreground">Maximum boost:</span>{" "}
                 1.3x with BrightID + Farcaster verification + symbolic stake.
               </p>
               <p>
-                Push notifies each achievement. Open a 1:1 chat for support during the mission if needed.
+                Push notifies each achievement so your community team can celebrate or assist in seconds.
               </p>
             </div>
             <div className="rounded-2xl border border-dashed bg-muted/40 p-4 text-sm">
@@ -231,7 +231,7 @@ export default function QuestsPage() {
             <div className="rounded-2xl border bg-primary/10 p-4 text-sm text-primary">
               <ThumbsUp className="mb-2 h-6 w-6" />
               <p>
-                UX tip: keep copy concise and mobile-first. Allow users to pause and resume every quest from any device.
+                UX tip: keep calls-to-action short and mobile-first so users can pause, resume, and still feel momentum toward the claim.
               </p>
             </div>
           </aside>

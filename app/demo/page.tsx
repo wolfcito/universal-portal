@@ -2,34 +2,34 @@ import { ArrowRight, ListRestart, Play, StepForward } from "lucide-react";
 
 const steps = [
   {
-    title: "1. Connect wallet on chain A",
+    title: "1. Connect from any chain",
     detail:
-      "Open Universal Portal, connect the wallet (e.g., Ethereum Sepolia) via the universal signer, and show the debug info.",
-    highlight: "Highlight the universal signer working cross-chain.",
+      "Open Universal Portal, connect on Ethereum Sepolia (or another L2), and spotlight the universal signer that makes cross-chain onboarding effortless.",
+    highlight: "Lead with the frictionless first impression buyers care about.",
   },
   {
-    title: "2. Complete a quick quest",
+    title: "2. Unlock a quick quest",
     detail:
-      "Open the quests screen, mark the onchain mission (min tx on Donut), and show the Push notification.",
-    highlight: "Emphasize the educational experience and mobile-friendly CTA.",
+      "Show the quests screen, complete the Donut micro-transaction, and surface the Push notification that proves engagement.",
+    highlight: "Sell the activation moment and why retention teams love it.",
   },
   {
-    title: "3. Pass eligibility",
+    title: "3. Pass eligibility instantly",
     detail:
-      "Navigate to the Eligibility view. Showcase the estimated score (Passport ≥ 15 + BrightID) and the 1.2x boost.",
-    highlight: "Explain defense in depth and lightweight appeals.",
+      "Navigate to Eligibility, display the score preview (Passport ≥ 15 + BrightID boost), and explain how humans glide through while bots stall out.",
+    highlight: "Position Sybil resistance as a growth lever, not a blocker.",
   },
   {
-    title: "4. Claim on Push Chain (Donut)",
+    title: "4. Claim on Push Chain Donut",
     detail:
-      "On the claim screen, review the form, preview amounts, run the verification, and click Execute universal claim.",
-    highlight: "Mention `pushChainClient.universal.sendTransaction` and the Merkle proof.",
+      "Visit the claim view, recap the reward, run verification, and execute `pushChainClient.universal.sendTransaction` with confidence.",
+    highlight: "Anchor the narrative on trust, transparency, and speedy settlement.",
   },
   {
-    title: "5. Instant notification",
+    title: "5. Close with instant proof",
     detail:
-      "Trigger the Push notification with hash, amount, and boost applied. Optionally open the support chat.",
-    highlight: "Reinforce Push's core value (alerts + chat).",
+      "Trigger the Push notification with tx hash, reward amount, and applied boost. Offer the support chat as white-glove follow-up.",
+    highlight: "Reinforce Push's promise: every key event is confirmed in real time.",
   },
 ];
 
@@ -43,11 +43,10 @@ export default function DemoPage() {
             Demo Script · 2-3 min
           </span>
           <h1 className="mt-4 text-3xl font-bold sm:text-4xl">
-            Deploython storyboard
+            Storyboard for winning demos
           </h1>
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-            Clear narrative for judges and community. Illustrates the universal flow (chain A → Push Chain),
-            how we fight Sybils, and the quests UX. Every step includes a highlight and technical callout.
+            Give investors, partners, and judges the polished walkthrough they expect. Each step blends the commercial storyline with the technical proof points that back it up.
           </p>
         </div>
       </section>
@@ -77,8 +76,7 @@ export default function DemoPage() {
             Presentation tip
           </p>
           <p className="mt-2">
-            Keep the demo fluid: preload Spray, Eligibility, Quests, and Claim tabs before starting.
-            Close with the Push notifications modal for a strong finish.
+            Keep the energy high: preload Spray, Eligibility, Quests, and Claim, then end on the notifications modal so decision-makers walk away seeing the full lifecycle.
           </p>
         </div>
       </section>

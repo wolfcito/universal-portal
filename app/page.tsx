@@ -43,10 +43,8 @@ const infra = [
   {
     title: "Donut Testnet - Quick Start",
     items: [
-      { label: "RPC HTTP", value: "https://rpc.pushchain.tech" },
-      { label: "RPC WSS", value: "wss://rpc.pushchain.tech/ws" },
-      { label: "Chain ID", value: "12227331" },
-      { label: "Explorer", value: "https://explorer.pushchain.tech" },
+      { label: "Chain ID", value: "42101" },
+      { label: "Explorer", value: "https://donut.push.network" },
       { label: "Faucet", value: "https://faucet.push.org" },
       { label: "Network", value: "Push Chain Donut" },
     ],
@@ -173,11 +171,11 @@ export default function LandingPage() {
                   <p className="text-sm font-semibold">Eligibility Snapshot</p>
                   <p className="text-xs text-muted-foreground">
                     Passport ≥ 15 or BrightID + Farcaster = 1.2x boost. Communicate the rules before users spend gas.
-                </p>
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="mt-3 space-y-3 text-xs text-muted-foreground">
-              <div className="flex items-center justify-between rounded-lg bg-muted/60 px-3 py-2">
+              <div className="mt-3 space-y-3 text-xs text-muted-foreground">
+                <div className="flex items-center justify-between rounded-lg bg-muted/60 px-3 py-2">
                   <span>Stamp score</span>
                   <span className="font-semibold text-foreground">18 / 25</span>
                 </div>

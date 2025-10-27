@@ -2,6 +2,10 @@
 
 import { usePushChainClient } from '@pushchain/ui-kit';
 
+const sprayContractAddress = process.env.NEXT_PUBLIC_SPRAY_CONTRACT ?? '';
+const isValidSprayContract =
+  /^0x[a-fA-F0-9]{40}$/.test(sprayContractAddress);
+
 export function DebugInfo() {
   const { pushChainClient } = usePushChainClient();
 
@@ -16,10 +20,10 @@ export function DebugInfo() {
           <strong>Network:</strong> TESTNET
         </div>
         <div>
-          <strong>Spray Contract:</strong> 0x6A9d2E8c356E254f50689aEa5D1E5E8FeaAB03a6
+          <strong>Spray Contract:</strong> {sprayContractAddress || 'Not set'}
         </div>
         <div>
-          <strong>Contract Valid:</strong> ✅ Yes
+          <strong>Contract Valid:</strong> {isValidSprayContract ? '✅ Yes' : '❌ No'}
         </div>
         <div>
           <strong>UI Kit Version:</strong> 1.1.25

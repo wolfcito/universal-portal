@@ -13,6 +13,8 @@ pnpm dev
 
 The app runs on `http://localhost:3000`. Wallet connectivity relies on `@pushchain/ui-kit`, so run it in a browser that can inject wallets or in a desktop with Push Wallet installed.
 
+Create a `.env.local` (or use the provided `.env.example`) and set `NEXT_PUBLIC_SPRAY_CONTRACT` with the spray contract address you want to target on Push Chain Donut.
+
 ## Routes & use cases
 
 | Route | Purpose | Highlights |
@@ -28,10 +30,8 @@ The app runs on `http://localhost:3000`. Wallet connectivity relies on `@pushcha
 
 ## Donut testnet essentials
 
-- RPC HTTP: `https://rpc.pushchain.tech`
-- RPC WebSocket: `wss://rpc.pushchain.tech/ws`
-- Chain ID: `12227331`
-- Explorer: `https://explorer.pushchain.tech`
+- Chain ID: `42101`
+- Explorer: `https://donut.push.network`
 - Faucet: `https://faucet.push.org`
 - Network name: `Push Chain Donut`
 
@@ -99,4 +99,4 @@ await tx.wait();
 
 - **Front**: Next.js 16 + TypeScript + TailwindCSS.
 - **Wallet**: `@pushchain/ui-kit` with `PushUniversalWalletProvider`.
-- **Spray contract**: `0x6A9d2E8c356E254f50689aEa5D1E5E8FeaAB03a6` (Donut testnet, mock).
+- **Spray contract**: `0x1Ce09372b55da77E246bc49063a98c7e06F78270` (Donut testnet, mock).

@@ -10,7 +10,9 @@ import { DebugInfo } from './debug-info';
 import { LoadingSpinner } from './loading-spinner';
 import { ClientOnly } from './client-only';
 
-const sprayContractAddress = '0x6A9d2E8c356E254f50689aEa5D1E5E8FeaAB03a6' as `0x${string}`;
+const sprayContractAddress = process.env.NEXT_PUBLIC_SPRAY_CONTRACT ?? '';
+const isValidSprayContract =
+  /^0x[a-fA-F0-9]{40}$/.test(sprayContractAddress);
 
 export function SprayForm() {
   return (
@@ -39,8 +41,8 @@ function SprayFormContent() {
       return alert('Please connect your wallet first');
     }
 
-    if (!sprayContractAddress) {
-      return alert('Error: SPRAY_CONTRACT is not configured');
+    if (!isValidSprayContract) {
+      return alert('Error: NEXT_PUBLIC_SPRAY_CONTRACT is not configured correctly');
     }
 
     const lines = input.trim().split('\n');
@@ -102,14 +104,14 @@ function SprayFormContent() {
 
       console.log('Sending transaction...');
       console.log('Transaction details:', {
-        to: sprayContractAddress,
+        to: sprayContractAddress as `0x${string}`,
         value: totalValue.toString(),
         data: data,
       });
       
       // Send the transaction through the universal pattern
       const tx = await pushChainClient.universal.sendTransaction({
-        to: sprayContractAddress,
+        to: sprayContractAddress as `0x${string}`,
         value: totalValue,
         data,
       });

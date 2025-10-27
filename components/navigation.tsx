@@ -1,8 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import LogoImage from '@/app/icon.png';
 
 const routes = [
   { href: '/', label: 'Home' },
@@ -21,8 +23,15 @@ export function Navigation() {
     <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center space-x-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary">
-            <span className="text-lg font-semibold">UP</span>
+          <div className="relative h-10 w-10 overflow-hidden rounded-full border border-primary/40 bg-primary/10">
+            <Image
+              src={LogoImage}
+              alt="Universal Portal logo"
+              fill
+              sizes="40px"
+              priority
+              className="object-cover"
+            />
           </div>
           <div className="flex flex-col leading-tight">
             <span className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">

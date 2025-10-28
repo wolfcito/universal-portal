@@ -1,39 +1,69 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { MoonStar, Sun } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+type ThemeMode = 'light' | 'dark';
 
 export function ThemeToggle() {
-  const [isDark, setIsDark] = useState(false);
+  const [theme, setTheme] = useState<ThemeMode | null>(null);
 
   useEffect(() => {
-    // Check current theme on load
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    setIsDark(currentTheme === 'dark');
-    document.documentElement.classList.toggle('dark', currentTheme === 'dark');
+    const stored = localStorage.getItem('theme') as ThemeMode | null;
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const resolvedTheme: ThemeMode = stored ?? (prefersDark ? 'dark' : 'light');
+
+    setTheme(resolvedTheme);
+    document.documentElement.classList.toggle('dark', resolvedTheme === 'dark');
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme = isDark ? 'light' : 'dark';
-    setIsDark(!isDark);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.toggle('dark');
+  useEffect(() => {
+    if (!theme) return;
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handler = (event: MediaQueryListEvent) => {
+      if (!localStorage.getItem('theme')) {
+        const nextTheme: ThemeMode = event.matches ? 'dark' : 'light';
+        setTheme(nextTheme);
+        document.documentElement.classList.toggle('dark', nextTheme === 'dark');
+      }
+    };
+
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, [theme]);
+
+  if (!theme) {
+    return null;
+  }
+
+  const isDark = theme === 'dark';
+
+  const handleToggle = () => {
+    const nextTheme: ThemeMode = isDark ? 'light' : 'dark';
+    setTheme(nextTheme);
+    localStorage.setItem('theme', nextTheme);
+    document.documentElement.classList.toggle('dark', nextTheme === 'dark');
   };
+
+  const label = isDark ? 'Switch to light mode' : 'Switch to dark mode';
 
   return (
     <button
-      onClick={toggleTheme}
-      className="fixed top-4 right-4 z-50 p-3 rounded-full bg-gray-800 dark:bg-gray-500/50 dark:hover:bg-gray-500/50 transition-colors duration-200 shadow-lg cursor-pointer"
-      aria-label="Toggle theme"
-    >
-      {isDark ? (
-        <svg className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-          <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
-        </svg>
-      ) : (
-        <svg className="w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-        </svg>
+      type="button"
+      onClick={handleToggle}
+      aria-label={label}
+      aria-pressed={isDark}
+      className={cn(
+        'fixed top-5 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full border shadow-lg transition-colors duration-200',
+        'backdrop-blur supports-[backdrop-filter]:bg-background/80',
+        isDark
+          ? 'border-primary/50 bg-background/90 text-primary hover:border-primary hover:bg-background'
+          : 'border-primary/40 bg-primary text-primary-foreground hover:bg-primary/90 hover:border-primary/60'
       )}
+    >
+      {isDark ? <MoonStar className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
     </button>
   );
-} 
+}

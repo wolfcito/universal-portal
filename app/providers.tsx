@@ -24,13 +24,19 @@ function PushWalletProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <Provider 
-    config={{ network: PushUI.CONSTANTS.PUSH_NETWORK.TESTNET }}
-    themeOverrides={{
-      '--pwauth-btn-connect-border-radius': '7px',
-      '--pwauth-btn-connect-bg-color': '#6247e5',
-      '--pwauth-btn-connect-color': '#fff',
-    }}
+    <Provider
+      config={{
+        uid: 'spray',
+        network: PushUI.CONSTANTS.PUSH_NETWORK.TESTNET,
+      }}
+      themeOverrides={{
+        '--pwauth-btn-connect-border-radius': '999px',
+        '--pwauth-btn-connect-bg-color': '#6c47ff',
+        '--pwauth-btn-connect-bg-hover-color': '#5534d6',
+        '--pwauth-btn-connect-color': '#ffffff',
+        '--pwauth-btn-connect-font-weight': '600',
+        '--pwauth-btn-connect-padding': '0.6rem 1.5rem',
+      }}
     >
       {children}
     </Provider>

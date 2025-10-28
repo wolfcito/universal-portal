@@ -73,7 +73,7 @@ export function SprayForm() {
 }
 
 function SprayFormContent() {
-  const { pushChainClient } = usePushChainClient();
+  const { pushChainClient } = usePushChainClient('spray');
   const [isToken, setIsToken] = useState(false);
   const [tokenAddr, setTokenAddr] = useState('');
   const [input, setInput] = useState('');

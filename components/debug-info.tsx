@@ -7,7 +7,7 @@ const isValidSprayContract =
   /^0x[a-fA-F0-9]{40}$/.test(sprayContractAddress);
 
 export function DebugInfo() {
-  const { pushChainClient } = usePushChainClient();
+  const { pushChainClient } = usePushChainClient('spray');
 
   return (
     <div className="mt-4 p-4 bg-muted text-muted-foreground rounded-lg border">

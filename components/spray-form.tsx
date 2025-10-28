@@ -78,19 +78,27 @@ function SprayFormContent() {
   const [tokenAddr, setTokenAddr] = useState('');
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [successTxHash, setSuccessTxHash] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async () => {
+    setErrorMessage(null);
+    setSuccessTxHash(null);
+
     if (!pushChainClient) {
-      return alert('Please connect your wallet first');
+      setErrorMessage('Please connect your wallet first.');
+      return;
     }
 
     if (!isValidSprayContract) {
-      return alert('Error: NEXT_PUBLIC_SPRAY_CONTRACT is not configured correctly');
+      setErrorMessage('NEXT_PUBLIC_SPRAY_CONTRACT is not configured correctly.');
+      return;
     }
 
     const lines = input.trim().split('\n');
     if (lines.length === 0 || (lines.length === 1 && lines[0] === '')) {
-      return alert('Please enter at least one address and amount');
+      setErrorMessage('Please enter at least one address and amount.');
+      return;
     }
 
     const to: string[] = [];
@@ -118,11 +126,13 @@ function SprayFormContent() {
 
       if (isToken) {
         if (!tokenAddr || !/^0x[a-fA-F0-9]{40}$/.test(tokenAddr.trim())) {
-          throw new Error('Invalid token contract address. Please provide a valid 0x-prefixed address.');
+          throw new Error('Invalid token contract address. Provide a valid 0x-prefixed address.');
         }
       }
     } catch (err) {
-      alert(`Error al procesar datos: ${err instanceof Error ? err.message : 'Error desconocido'}`);
+      setErrorMessage(
+        `Error processing data: ${err instanceof Error ? err.message : 'Unknown error'}`
+      );
       return;
     }
 
@@ -169,7 +179,7 @@ function SprayFormContent() {
       await tx.wait();
       
       console.log('Transaction successful:', { tx });
-      alert(`Success! TxHash: ${tx.hash}`);
+      setSuccessTxHash(tx.hash);
       
       // Reset form after success
       setInput('');
@@ -181,7 +191,10 @@ function SprayFormContent() {
         err instanceof Error && err.message
           ? err.message
           : 'Unknown error';
-      alert(`Failed to send transaction${reason ? `: ${reason}` : `: ${fallback}`}`);
+      setSuccessTxHash(null);
+      setErrorMessage(
+        `Failed to send transaction${reason ? `: ${reason}` : `: ${fallback}`}`
+      );
     } finally {
       setLoading(false);
     }
@@ -242,6 +255,43 @@ function SprayFormContent() {
         >
           {loading ? 'Sending...' : 'Spray'}
         </button>
+
+        {successTxHash && (
+          <div className="rounded-2xl border border-primary/30 bg-primary/10 p-4 text-sm text-primary">
+            <p className="font-semibold text-foreground">Spray executed!</p>
+            <p className="mt-1 text-xs text-primary/80">
+              View transaction details on Push Chain Donut.
+            </p>
+            <div className="mt-3 inline-flex flex-wrap items-center gap-2 text-sm font-semibold text-primary">
+              <a
+                href={`https://donut.push.network/tx/${successTxHash}`}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="max-w-full break-all underline underline-offset-4 hover:text-primary/80"
+              >
+                {`${successTxHash.slice(0, 10)}…${successTxHash.slice(-6)}`}
+              </a>
+              <button
+                type="button"
+                onClick={() => {
+                  navigator.clipboard.writeText(successTxHash).catch((err) => {
+                    console.error('Failed to copy hash', err);
+                  });
+                }}
+                className="rounded-full border border-primary/30 px-3 py-1 text-xs uppercase tracking-wide text-primary hover:bg-primary/10"
+              >
+                Copy
+              </button>
+            </div>
+          </div>
+        )}
+
+        {errorMessage && (
+          <div className="rounded-2xl border border-destructive/40 bg-destructive/10 p-4 text-sm text-destructive">
+            <p className="font-semibold">Transaction failed</p>
+            <p className="mt-1 text-xs text-destructive/80">{errorMessage}</p>
+          </div>
+        )}
       </div>
 
       {/* Debug info - only render during development */}

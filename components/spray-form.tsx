@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { parseEther, parseUnits } from 'ethers';
+import { AbiCoder, Interface, InterfaceAbi, parseEther, parseUnits } from 'ethers';
 import { usePushChainClient } from '@pushchain/ui-kit';
 import { PushChain } from '@pushchain/core';
 import sprayAbi from '@/abi/spray.abi.json';
@@ -13,6 +13,49 @@ import { ClientOnly } from './client-only';
 const sprayContractAddress = process.env.NEXT_PUBLIC_SPRAY_CONTRACT ?? '';
 const isValidSprayContract =
   /^0x[a-fA-F0-9]{40}$/.test(sprayContractAddress);
+const sprayInterface = new Interface(sprayAbi as InterfaceAbi);
+const abiCoder = AbiCoder.defaultAbiCoder();
+
+function extractRevertReason(error: unknown): string | null {
+  const baseError = (error as { cause?: unknown })?.cause ?? error;
+  const data =
+    typeof (baseError as { data?: unknown })?.data === 'string'
+      ? ((baseError as { data: string }).data)
+      : typeof (baseError as { error?: { data?: unknown } })?.error?.data === 'string'
+        ? ((baseError as { error: { data: string } }).error.data)
+        : null;
+
+  if (typeof data === 'string' && data.startsWith('0x')) {
+    if (data.startsWith('0x08c379a0')) {
+      try {
+        const [reason] = abiCoder.decode(['string'], `0x${data.slice(10)}`);
+        return String(reason);
+      } catch (decodeErr) {
+        console.error('Failed to decode revert string', decodeErr);
+      }
+    }
+
+    try {
+      const parsed = sprayInterface.parseError(data);
+      const args =
+        'args' in parsed && Array.isArray(parsed.args) && parsed.args.length
+          ? `: ${parsed.args.map((arg) => String(arg)).join(', ')}`
+          : '';
+      return `${parsed.name ?? 'Contract error'}${args}`;
+    } catch (parseErr) {
+      console.error('Failed to parse contract error', parseErr);
+    }
+  }
+
+  const message =
+    typeof (baseError as { shortMessage?: unknown })?.shortMessage === 'string'
+      ? (baseError as { shortMessage: string }).shortMessage
+      : typeof (baseError as { message?: unknown })?.message === 'string'
+        ? (baseError as { message: string }).message
+        : null;
+
+  return message ?? null;
+}
 
 export function SprayForm() {
   return (
@@ -56,7 +99,7 @@ function SprayFormContent() {
     try {
       for (const line of lines) {
         const [addr, amt] = line.split(',').map((s: string) => s.trim());
-        
+
         if (!addr || !amt) {
           throw new Error(`Invalid format on line: ${line}. Expected: address,amount`);
         }
@@ -71,6 +114,12 @@ function SprayFormContent() {
           ? parseUnits(amt, 18)
           : parseEther(amt);
         amounts.push(value);
+      }
+
+      if (isToken) {
+        if (!tokenAddr || !/^0x[a-fA-F0-9]{40}$/.test(tokenAddr.trim())) {
+          throw new Error('Invalid token contract address. Please provide a valid 0x-prefixed address.');
+        }
       }
     } catch (err) {
       alert(`Error al procesar datos: ${err instanceof Error ? err.message : 'Error desconocido'}`);
@@ -92,13 +141,13 @@ function SprayFormContent() {
 
     try {
       setLoading(true);
-      
+
       // Encode transaction data using PushChain utils
       const data = PushChain.utils.helpers.encodeTxData({
         abi: sprayAbi,
-        functionName: isToken ? 'sprayToken' : 'sprayEther',
+        functionName: isToken ? 'disperseToken' : 'disperseNative',
         args: isToken
-          ? [tokenAddr, to, amounts]
+          ? [tokenAddr.trim(), to, amounts]
           : [to, amounts],
       }) as `0x${string}`;
 
@@ -127,28 +176,39 @@ function SprayFormContent() {
       setTokenAddr('');
     } catch (err) {
       console.error('Transaction error:', err);
-      alert(`Failed to send transaction: ${err instanceof Error ? err.message : 'Unknown error'}`);
+      const reason = extractRevertReason(err);
+      const fallback =
+        err instanceof Error && err.message
+          ? err.message
+          : 'Unknown error';
+      alert(`Failed to send transaction${reason ? `: ${reason}` : `: ${fallback}`}`);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-card text-card-foreground rounded-lg shadow-lg border">
-      <div className="flex justify-between items-center">
-        <h2 className="flex text-3xl font-bold mb-4">SPRAY</h2>
-        <WalletButton />  
+    <div className="mx-auto max-w-lg rounded-3xl border border-primary/20 bg-gradient-to-br from-card via-background to-card p-8 text-card-foreground shadow-xl">
+      <div className="flex items-center justify-between rounded-2xl bg-muted/60 p-4">
+        <div className="space-y-1">
+          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            Spray console
+          </p>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground">
+            SPRAY
+          </h2>
+        </div>
+        <WalletButton />
       </div>
-      
-      
-      <div className="mt-4">
-        <div className="space-y-2 mb-4">
-          <label className="inline-flex items-center">
+
+      <div className="mt-6 space-y-6">
+        <div className="rounded-2xl border border-dashed border-primary/30 bg-background/60 p-4">
+          <label className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground">
             <input
               type="checkbox"
               checked={isToken}
               onChange={() => setIsToken((x: boolean) => !x)}
-              className="mr-2"
+              className="h-4 w-4 rounded border-border text-primary focus:ring-primary"
             />
             Spray ERC-20 Token
           </label>
@@ -160,7 +220,7 @@ function SprayFormContent() {
             placeholder="Token contract address"
             value={tokenAddr}
             onChange={(e) => setTokenAddr(e.target.value)}
-            className="w-full mb-4 p-2 border rounded bg-background text-foreground placeholder:text-muted-foreground"
+            className="w-full rounded-2xl border border-border bg-background/80 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
           />
         )}
 
@@ -171,19 +231,19 @@ function SprayFormContent() {
             0xabcd...0678, 0.05`}
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          className="w-full mb-4 p-2 border rounded text-sm bg-background placeholder:text-muted-foreground font-mono"
-          rows={5}
+          className="w-full rounded-2xl border border-border bg-background/80 px-4 py-3 font-mono text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
+          rows={6}
         />
 
         <button
           onClick={handleSubmit}
           disabled={loading || !pushChainClient}
-          className="w-full py-3 bg-purple-500 text-primary-foreground rounded hover:bg-purple-500/90 disabled:bg-muted disabled:text-muted-foreground disabled:cursor-not-allowed transition-colors"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground"
         >
           {loading ? 'Sending...' : 'Spray'}
         </button>
       </div>
-      
+
       {/* Debug info - only render during development */}
       {process.env.NODE_ENV === 'development' && <DebugInfo />}
     </div>

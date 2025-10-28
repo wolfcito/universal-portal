@@ -56,7 +56,7 @@ export function ThemeToggle() {
       aria-label={label}
       aria-pressed={isDark}
       className={cn(
-        'fixed top-5 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full border shadow-lg transition-colors duration-200',
+        'fixed bottom-6 left-6 z-50 flex h-12 w-12 items-center justify-center rounded-full border shadow-lg transition-colors duration-200',
         'backdrop-blur supports-[backdrop-filter]:bg-background/80',
         isDark
           ? 'border-primary/50 bg-background/90 text-primary hover:border-primary hover:bg-background'

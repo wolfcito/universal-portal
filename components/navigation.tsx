@@ -69,13 +69,7 @@ export function Navigation() {
             href="/demo"
             className="hidden rounded-full border px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted md:inline-flex"
           >
-            Demo Script
-          </Link>
-          <Link
-            href="/spray"
-            className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
-          >
-            Open App
+            Showtime
           </Link>
         </div>
       </div>

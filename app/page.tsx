@@ -64,40 +64,43 @@ const flow = [
   {
     title: "1) Import and segment audiences",
     detail:
-      "Drag in CSV/JSON from any chain, auto-dedupe wallets, and size allocations before choosing spray or Merkle delivery.",
+      "Drag in CSV/JSON from any chain, auto-dedupe wallets, and size allocations before choosing spray or Merkle delivery, with audit-ready logs for compliance reviews.",
   },
   {
     title: "2) Activate layered identity checks",
     detail:
-      "Toggle the right stamp providers, balance friction vs conversion, and show users exactly how to qualify in plain English.",
+      "Toggle the right stamp providers, balance friction vs conversion, and show users exactly how to qualify in plain English while keeping risk teams aligned.",
   },
   {
     title: "3) Drive action with quests",
     detail:
-      "Launch micro-quests that teach the product story, trigger aha moments, and stack multipliers so rewards feel earned.",
+      "Launch micro-quests that teach the product story, trigger aha moments, and stack multipliers so rewards feel earned—backed by clear conversion proof points.",
   },
   {
     title: "4) Settle claims universally",
     detail:
-      "Let users connect from their home chain, finalize on Push Chain with simulations and proofs, and close the loop with instant receipts.",
+      "Let users connect from their home chain, finalize on Push Chain with simulations and proofs, and close the loop with instant receipts and stakeholder-ready reporting.",
   },
 ];
 
 const metrics = [
   {
-    title: "Qualified wallets",
+    title: "MVP Benchmark · Qualified wallets",
     value: "82%",
-    description: "Wallets that clear Sybil checks without manual review.",
+    description:
+      "Wallets that clear Sybil checks without manual review. Mirrors Project G.U.D Deploython target.",
   },
   {
-    title: "Speed to reward",
+    title: "MVP Benchmark · Speed to reward",
     value: "3m 40s",
-    description: "Average journey from landing page to confirmed claim.",
+    description:
+      "Average journey from landing page to confirmed claim. Mirrors Project G.U.D Deploython target.",
   },
   {
-    title: "Gas per claim",
+    title: "MVP Benchmark · Gas per claim",
     value: "~45k gas",
-    description: "Merkle execution on Donut compared with direct spray.",
+    description:
+      "Merkle execution on Donut compared with direct spray. Mirrors Project G.U.D Deploython target.",
   },
 ];
 
@@ -109,27 +112,37 @@ export default function LandingPage() {
           <div className="flex flex-1 flex-col gap-6">
             <span className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary">
               <Sparkle className="h-4 w-4" />
-              Growth Engine · Push Chain Donut
+              Project G.U.D · Push Chain Donut
             </span>
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              Launch high-converting reward campaigns on Push Chain.
+              Project G.U.D Universal Portal for commercial Push Chain pilots.
             </h1>
             <p className="max-w-2xl text-base text-muted-foreground sm:text-lg">
-              Universal Portal packages cross-chain distribution, layered Sybil defense, and gamified quests into one commercial-ready experience. Sell the narrative, ship the campaign, and measure the ROI from day one.
+              Deliver a guided Push Chain Donut experience that blends cross-chain distribution, layered Sybil defense, and activation quests into one enterprise-ready storyline. Prove ROI, secure stakeholder buy-in, and move from demo to deployment without rework.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/spray"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
               >
-                Open Spray Console
+                <span className="flex flex-col text-left leading-tight">
+                  <span>Launch Spray Demo</span>
+                  <span className="text-xs font-normal uppercase tracking-wide text-primary-foreground/80">
+                    Guided walkthrough
+                  </span>
+                </span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/demo"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
               >
-                Demo Script
+                <span className="flex flex-col text-left leading-tight">
+                  <span>Download Demo Script</span>
+                  <span className="text-xs font-normal uppercase tracking-wide text-muted-foreground">
+                    Sales-ready narrative
+                  </span>
+                </span>
                 <Clock className="h-4 w-4" />
               </Link>
             </div>
@@ -243,7 +256,7 @@ export default function LandingPage() {
               Commercial campaigns powered by Project G.U.D infrastructure
             </h2>
             <p className="mt-3 text-sm text-muted-foreground sm:text-base">
-              Replace ad-hoc scripts with a branded experience that is easy to sell. Every building block below is documented, measurable, and mirrored in deployment scripts so you can move from demo to production without rewriting the story.
+              Replace ad-hoc scripts with a branded experience that is easy to sell. Every building block below is documented, measurable, and mirrored in deployment scripts so you can move from demo to production without rewriting the Project G.U.D story.
             </p>
             <div className="mt-6 grid gap-4">
               {flow.map((stage) => (
@@ -299,10 +312,10 @@ export default function LandingPage() {
               Why teams choose Universal Portal
             </span>
             <h2 className="text-3xl font-bold sm:text-4xl">
-              Turn every demo into a commercial win.
+              Turn every Project G.U.D demo into a commercial win.
             </h2>
             <p className="text-sm text-muted-foreground sm:text-base">
-              Lead with value in under three minutes: showcase cross-chain distribution, human-resistant scoring, and activation quests that actually convert. The supporting views (admin, eligibility, metrics) reinforce the story for buyers and partners.
+              Lead with value in under three minutes: showcase cross-chain distribution, human-resistant scoring, and activation quests that actually convert. The supporting views (admin, eligibility, metrics) reinforce the sales playbook, highlight Push Network support resources, and prove commercial pilot readiness.
             </p>
             <div className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
               <span className="rounded-full border border-dashed px-3 py-1">
@@ -316,6 +329,9 @@ export default function LandingPage() {
               </span>
               <span className="rounded-full border border-dashed px-3 py-1">
                 Secure airdrop
+              </span>
+              <span className="rounded-full border border-dashed px-3 py-1">
+                Push Network program support
               </span>
             </div>
           </div>
